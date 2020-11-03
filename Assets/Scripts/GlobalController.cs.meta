@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: d5ed7443c4c8ec6499c7f833c1a709ea
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - postProcessProfile: {fileID: 11400000, guid: 4344b353307de48449dffd3bdc72d680, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
