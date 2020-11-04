@@ -7,17 +7,6 @@ public class MainCamera : MonoBehaviour
 
     private const float InterpolationRatio = 0.0625f;
 
-    // Awake is called when object is initialized
-    private void Awake()
-    {
-
-    }
-
-    // Start is called before the first frame update
-    private void Start()
-    {
-
-    }
 
     // Update is called once per frame
     private void Update()
@@ -30,7 +19,9 @@ public class MainCamera : MonoBehaviour
     {
         if (target == null || Time.deltaTime == 0f) return;
 
-        Vector3 lerpPosition = new Vector3(target.position.x, target.position.y + 1f, target.position.z);
+        Vector3 targetPosition = target.position;
+        Vector3 lerpPosition = new Vector3(targetPosition.x, targetPosition.y + 1f, targetPosition.z);
+
         transform.position = Vector3.Lerp(transform.position, lerpPosition, InterpolationRatio);
     }
 

@@ -2,19 +2,7 @@
 
 public class LightSource : MonoBehaviour
 {
-    private float _rotatingSpeed = 2f;
-
-    // Awake is called when object is initialized
-    private void Awake()
-    {
-        
-    }
-
-    // Start is called before the first frame update
-    private void Start()
-    {
-        
-    }
+    private const float RotatingSpeed = 2f;
 
     // Update is called once per frame
     private void Update()
@@ -25,6 +13,6 @@ public class LightSource : MonoBehaviour
     // Rotate the light source to give illusion of the sun orbiting
     private void Rotate()
     {
-        transform.Rotate( new Vector3(0f, _rotatingSpeed * Time.deltaTime, 0f), Space.World);
+        transform.Rotate( new Vector3(0f, RotatingSpeed * Time.deltaTime, 0f), Space.World);
     }
 }

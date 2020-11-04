@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private Menu[] menus;
 
     private FlowState _flowState;
-    [SerializeField] private Turret _turret;
+    [SerializeField] private Turret turret;
 
     public MainCamera mainCamera;
 
@@ -59,11 +59,13 @@ public class GameController : MonoBehaviour
     {
         if (_flowState != FlowState.Aiming) return;
 
-        _turret.Shoot();
+        turret.Shoot();
 
-        _currentProjectile = Instantiate(projectiles[UnityEngine.Random.Range(0, projectiles.Count - 1)], _turret.spawnPoint.position, _turret.spawnPoint.rotation).GetComponent<Projectile>();
-        mainCamera.followTarget = _currentProjectile.transform;
-        mainCamera.rotateTarget = _currentProjectile.transform;
+        _currentProjectile = Instantiate(projectiles[UnityEngine.Random.Range(0, projectiles.Count - 1)], turret.spawnPoint.position, turret.spawnPoint.rotation).GetComponent<Projectile>();
+
+        Transform currentProjectileTransform = _currentProjectile.transform;
+        mainCamera.followTarget = currentProjectileTransform;
+        mainCamera.rotateTarget = currentProjectileTransform;
 
         ChangeFlowState(FlowState.Flying);
 
@@ -71,25 +73,35 @@ public class GameController : MonoBehaviour
 
     private void AimOnPerformed(InputAction.CallbackContext context)
     {
-        if (_flowState == FlowState.Aiming)
+        switch (_flowState)
         {
-            _turret.rotationVelocity = context.ReadValue<Vector2>();
-        }
-        else if (_flowState == FlowState.Flying)
-        {
-            _currentProjectile.rotationVelocity = context.ReadValue<Vector2>();
+            case FlowState.Aiming:
+                turret.rotationVelocity = context.ReadValue<Vector2>();
+                break;
+            case FlowState.Flying:
+                _currentProjectile.rotationVelocity = context.ReadValue<Vector2>();
+                break;
+            case FlowState.Returning:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 
     private void AimOnCanceled(InputAction.CallbackContext context)
     {
-        if (_flowState == FlowState.Aiming)
+        switch (_flowState)
         {
-            _turret.rotationVelocity = Vector2.zero;
-        }
-        else if (_flowState == FlowState.Flying)
-        {
-            _currentProjectile.rotationVelocity = Vector2.zero;
+            case FlowState.Aiming:
+                turret.rotationVelocity = Vector2.zero;
+                break;
+            case FlowState.Flying:
+                _currentProjectile.rotationVelocity = Vector2.zero;
+                break;
+            case FlowState.Returning:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 
@@ -110,6 +122,7 @@ public class GameController : MonoBehaviour
         // Start the game
         // TODO: Play a cutscene THEN start the game
         _gameState = GameState.Started;
+        Cursor.lockState = CursorLockMode.Locked;
 
         GlobalController.Instance.DisableDepthOfField();
     }
@@ -118,6 +131,7 @@ public class GameController : MonoBehaviour
     private void Pause()
     {
         _gameState = GameState.Paused;
+        Cursor.lockState = CursorLockMode.None;
 
         // Enable depth of field effects
         GlobalController.Instance.EnableDepthOfField();
@@ -133,6 +147,7 @@ public class GameController : MonoBehaviour
     public void Resume()
     {
         _gameState = GameState.Started;
+        Cursor.lockState = CursorLockMode.Locked;
 
         // Disable depth of field effects
         GlobalController.Instance.DisableDepthOfField();
@@ -160,13 +175,13 @@ public class GameController : MonoBehaviour
         // TODO: Freeze game
     }
 
-    public void ChangeFlowState(FlowState newState)
+    private void ChangeFlowState(FlowState newState)
     {
         _flowState = newState;
 
         if (_flowState != FlowState.Aiming)
         {
-            _turret.enabled = false;
+            turret.enabled = false;
         }
     }
 }

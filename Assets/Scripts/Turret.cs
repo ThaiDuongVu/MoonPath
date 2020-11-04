@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Turret : MonoBehaviour
 {
     private Animator _animator;
+    private static readonly int Shoot1 = Animator.StringToHash("shoot");
 
     [SerializeField] private Transform head;
 
@@ -18,12 +18,6 @@ public class Turret : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-
-    }
-
     // Update is called once per frame
     private void Update()
     {
@@ -34,14 +28,16 @@ public class Turret : MonoBehaviour
     public void Shoot()
     {
         // Play shoot animation
-        _animator.SetTrigger("shoot");
+        _animator.SetTrigger(Shoot1);
         // Shake the camera
         CameraShake.Instance.ShakeLight();
     }
 
     // Rotate based on player's input
-    private void Rotate(Vector2 speed, Transform target)
+    private static void Rotate(Vector2 speed, Transform target)
     {
+        if (Time.timeScale == 0f) return;
+        
         target.Rotate(0f, speed.x, 0f, Space.World);
     }
 }

@@ -47,7 +47,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _turret: {fileID: 0}
+  turret: {fileID: 0}
   mainCamera: {fileID: 0}
   projectiles:
   - {fileID: 526241942518441077, guid: dcdd5edbcbaf6204dbe8f34508b34a31, type: 3}

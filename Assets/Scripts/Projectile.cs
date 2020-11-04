@@ -14,12 +14,6 @@ public class Projectile : MonoBehaviour
         _characterController = GetComponent<CharacterController>();
     }
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-
-    }
-
     // Update is called once per frame
     private void Update()
     {
@@ -30,13 +24,20 @@ public class Projectile : MonoBehaviour
     // Move forward
     private void Move()
     {
-        _characterController.Move(transform.up * Velocity * Time.deltaTime);
+        _characterController.Move(transform.up * (Velocity * Time.deltaTime));
     }
 
     // Rotate based on player's input
     private void Rotate(Vector2 speed, Transform target)
     {
+        if (Time.timeScale == 0f) return;
+        
         target.Rotate(-speed.y, speed.x, 0f, Space.World);
-        transform.localRotation = new Quaternion(transform.localRotation.x, 0f, transform.localRotation.z, transform.localRotation.w);
+
+        Transform transform1 = transform;
+        Quaternion localRotation = transform1.localRotation;
+
+        localRotation = new Quaternion(localRotation.x, 0f, localRotation.z, localRotation.w);
+        transform1.localRotation = localRotation;
     }
 }

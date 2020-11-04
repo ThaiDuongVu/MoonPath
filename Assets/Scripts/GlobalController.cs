@@ -52,6 +52,6 @@ public class GlobalController : MonoBehaviour
     public void DisableDepthOfField()
     {
         // _depthOfField.enabled.value = false;
-        _depthOfField.focusDistance.value = 3.5f;
+        _depthOfField.focusDistance.value = 3.75f;
     }
 }
