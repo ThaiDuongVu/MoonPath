@@ -24,11 +24,7 @@ public class Projectile : MonoBehaviour
     private void Update()
     {
         Move();
-
-        if (rotationVelocity != Vector2.zero)
-        {
-            Rotate(rotationVelocity * RotationFactor, transform);
-        }
+        Rotate(rotationVelocity * RotationFactor, transform);
     }
 
     // Move forward
@@ -41,5 +37,6 @@ public class Projectile : MonoBehaviour
     private void Rotate(Vector2 speed, Transform target)
     {
         target.Rotate(-speed.y, speed.x, 0f, Space.World);
+        transform.localRotation = new Quaternion(transform.localRotation.x, 0f, transform.localRotation.z, transform.localRotation.w);
     }
 }

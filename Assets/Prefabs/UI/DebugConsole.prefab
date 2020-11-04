@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ded5af1c50f889649ade58e19a7f58e0, type: 2}
-  m_sharedMaterial: {fileID: -2836438747688941120, guid: ded5af1c50f889649ade58e19a7f58e0, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fdd61c89e99be15459dfc16660a1bba6, type: 2}
+  m_sharedMaterial: {fileID: -4132731240909833422, guid: fdd61c89e99be15459dfc16660a1bba6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -353,7 +353,7 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_RichText: 1
-  m_GlobalFontAsset: {fileID: 11400000, guid: ded5af1c50f889649ade58e19a7f58e0, type: 2}
+  m_GlobalFontAsset: {fileID: 11400000, guid: fdd61c89e99be15459dfc16660a1bba6, type: 2}
   m_OnFocusSelectAll: 1
   m_ResetOnDeActivation: 1
   m_RestoreOriginalTextOnEscape: 1
@@ -478,8 +478,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Enter text...
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ded5af1c50f889649ade58e19a7f58e0, type: 2}
-  m_sharedMaterial: {fileID: -2836438747688941120, guid: ded5af1c50f889649ade58e19a7f58e0, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fdd61c89e99be15459dfc16660a1bba6, type: 2}
+  m_sharedMaterial: {fileID: -4132731240909833422, guid: fdd61c89e99be15459dfc16660a1bba6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

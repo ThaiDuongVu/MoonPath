@@ -27,10 +27,7 @@ public class Turret : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (rotationVelocity != Vector2.zero)
-        {
-            Rotate(rotationVelocity * RotationFactor, head);
-        }
+        Rotate(rotationVelocity * RotationFactor, head);
     }
 
     // Shoot projectile from turret

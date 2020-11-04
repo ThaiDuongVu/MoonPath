@@ -5,7 +5,7 @@ public class MainCamera : MonoBehaviour
     public Transform followTarget;
     public Transform rotateTarget;
 
-    private const float InterpolationRatio = 0.1f;
+    private const float InterpolationRatio = 0.0625f;
 
     // Awake is called when object is initialized
     private void Awake()

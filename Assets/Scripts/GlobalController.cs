@@ -44,12 +44,14 @@ public class GlobalController : MonoBehaviour
     // Enable the depth of field effects
     public void EnableDepthOfField()
     {
-        _depthOfField.enabled.value = true;
+        // _depthOfField.enabled.value = true;
+        _depthOfField.focusDistance.value = 0.1f;
     }
 
     // Disable the depth of field effects
     public void DisableDepthOfField()
     {
-        _depthOfField.enabled.value = false;
+        // _depthOfField.enabled.value = false;
+        _depthOfField.focusDistance.value = 3.5f;
     }
 }
