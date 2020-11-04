@@ -8,6 +8,7 @@ public class Turret : MonoBehaviour
     [SerializeField] private Transform head;
 
     [HideInInspector] public Vector2 rotationVelocity;
+    private const float RotationFactor = 1.5f;
 
     public Transform spawnPoint;
 
@@ -28,7 +29,7 @@ public class Turret : MonoBehaviour
     {
         if (rotationVelocity != Vector2.zero)
         {
-            Rotate(rotationVelocity, head);
+            Rotate(rotationVelocity * RotationFactor, head);
         }
     }
 

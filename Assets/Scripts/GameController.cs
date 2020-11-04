@@ -63,6 +63,7 @@ public class GameController : MonoBehaviour
 
         _currentProjectile = Instantiate(projectiles[UnityEngine.Random.Range(0, projectiles.Count - 1)], _turret.spawnPoint.position, _turret.spawnPoint.rotation).GetComponent<Projectile>();
         mainCamera.followTarget = _currentProjectile.transform;
+        mainCamera.rotateTarget = _currentProjectile.transform;
 
         ChangeFlowState(FlowState.Flying);
 

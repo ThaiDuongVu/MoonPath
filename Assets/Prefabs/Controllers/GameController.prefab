@@ -50,6 +50,6 @@ MonoBehaviour:
   _turret: {fileID: 0}
   mainCamera: {fileID: 0}
   projectiles:
-  - {fileID: 4513721727984767454, guid: dcdd5edbcbaf6204dbe8f34508b34a31, type: 3}
-  - {fileID: 3875262525391506654, guid: 3519d7927d6c4164d938a6d1ab3fd67b, type: 3}
-  - {fileID: 5416692164981263370, guid: d92997af2f3f6f5468a5183c49c330d2, type: 3}
+  - {fileID: 526241942518441077, guid: dcdd5edbcbaf6204dbe8f34508b34a31, type: 3}
+  - {fileID: 7448547418903824457, guid: 3519d7927d6c4164d938a6d1ab3fd67b, type: 3}
+  - {fileID: 7308060564176204339, guid: d92997af2f3f6f5468a5183c49c330d2, type: 3}

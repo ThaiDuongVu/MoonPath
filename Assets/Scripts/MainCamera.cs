@@ -3,8 +3,9 @@
 public class MainCamera : MonoBehaviour
 {
     public Transform followTarget;
+    public Transform rotateTarget;
 
-    private const float InterpolationRatio = 0.05f;
+    private const float InterpolationRatio = 0.1f;
 
     // Awake is called when object is initialized
     private void Awake()
@@ -22,6 +23,7 @@ public class MainCamera : MonoBehaviour
     private void Update()
     {
         Follow(followTarget);
+        Rotate(rotateTarget);
     }
 
     private void Follow(Transform target)
@@ -30,7 +32,12 @@ public class MainCamera : MonoBehaviour
 
         Vector3 lerpPosition = new Vector3(target.position.x, target.position.y + 1f, target.position.z);
         transform.position = Vector3.Lerp(transform.position, lerpPosition, InterpolationRatio);
+    }
 
-        transform.forward = target.up;
+    private void Rotate(Transform target)
+    {
+        if (target == null || Time.deltaTime == 0f) return;
+
+        transform.forward = Vector3.Lerp(transform.forward, target.up, InterpolationRatio);
     }
 }
