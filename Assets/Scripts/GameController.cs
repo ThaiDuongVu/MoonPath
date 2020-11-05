@@ -13,6 +13,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private Turret turret;
 
     public MainCamera mainCamera;
+    public Transform cameraPoint;
+    public Transform spawnPoint;
 
     public List<Projectile> projectiles = new List<Projectile>();
     private Projectile _currentProjectile;
@@ -184,14 +186,14 @@ public class GameController : MonoBehaviour
         for (int i = 0; i < 200; i++)
         {
             Vector3 spawnPosition = new Vector3(UnityEngine.Random.Range(-75f, 75f), UnityEngine.Random.Range(-25f, 100f), UnityEngine.Random.Range(50f, 200f));
-            Quaternion spawnRotation = new Quaternion(UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f) , UnityEngine.Random.Range(0f, 1f));
-            
+            Quaternion spawnRotation = new Quaternion(UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f));
+
             asteroids.Add(Instantiate(asteroidPrefabs[UnityEngine.Random.Range(0, asteroidPrefabs.Count)], spawnPosition, spawnRotation));
         }
     }
 
     // Change the game's flow state to a new state
-    private void ChangeFlowState(FlowState newState)
+    public void ChangeFlowState(FlowState newState)
     {
         _flowState = newState;
 
@@ -202,6 +204,12 @@ public class GameController : MonoBehaviour
         else
         {
             turret.enabled = true;
+        }
+
+        if (_flowState == FlowState.Aiming)
+        {
+            mainCamera.followTarget = cameraPoint;
+            mainCamera.rotateTarget = spawnPoint;
         }
     }
 }

@@ -2,7 +2,8 @@
 
 public class Asteroid : MonoBehaviour
 {
-    private const float InterpolationRatio = 0.05f;
+    private const float InterpolationRatio = 0.01f;
+    private const float FloatingRange = 5f;
 
     // // Awake is called when object is initialized
     // private void Awake()
@@ -21,7 +22,7 @@ public class Asteroid : MonoBehaviour
     {
         if (Time.timeScale == 0f) return;
 
-        transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x + Random.Range(-1f, 1f), transform.position.y + Random.Range(-1f, 1f), transform.position.z + Random.Range(-1f, 1f)), InterpolationRatio);
+        transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x + Random.Range(-FloatingRange, FloatingRange), transform.position.y + Random.Range(-FloatingRange, FloatingRange), transform.position.z + Random.Range(-FloatingRange, FloatingRange)), InterpolationRatio);
     }
 
     public void Randomize()

@@ -612,7 +612,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b05c8a092bdef24c9b4606ac59e8f1e, type: 3}
   m_Name: 
@@ -1208,6 +1208,14 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 120734704}
+    - target: {fileID: 3330157789302060000, guid: 49fc3ee1cc3916743a5b532975250f1c, type: 3}
+      propertyPath: cameraPoint
+      value: 
+      objectReference: {fileID: 711880328}
+    - target: {fileID: 3330157789302060000, guid: 49fc3ee1cc3916743a5b532975250f1c, type: 3}
+      propertyPath: spawnPoint
+      value: 
+      objectReference: {fileID: 1070850163}
     - target: {fileID: 3330157789302060002, guid: 49fc3ee1cc3916743a5b532975250f1c, type: 3}
       propertyPath: m_Name
       value: GameController
