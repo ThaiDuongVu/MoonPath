@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7448547418903824456}
   - component: {fileID: 7448547418903824455}
   - component: {fileID: 7448547418903824454}
+  - component: {fileID: 4744274866354786168}
   - component: {fileID: 7448547418903824457}
   m_Layer: 0
   m_Name: Astronaut1
@@ -31,6 +32,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2747535717466252018}
+  - {fileID: 3842201629508674470}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -68,6 +70,25 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.15, z: 0}
+--- !u!95 &4744274866354786168
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7448547418903824459}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8c6f4abb4862e374ea44b61bb66155ad, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &7448547418903824457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,6 +102,68 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationVelocity: {x: 0, y: 0}
+--- !u!1001 &1619177977269863006
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7448547418903824456}
+    m_Modifications:
+    - target: {fileID: 2533916685354983909, guid: 42f00cbfc4c6dbb4583e29189cc52d78, type: 3}
+      propertyPath: m_Name
+      value: Trail
+      objectReference: {fileID: 0}
+    - target: {fileID: 2533916685354983928, guid: 42f00cbfc4c6dbb4583e29189cc52d78, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2533916685354983928, guid: 42f00cbfc4c6dbb4583e29189cc52d78, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2533916685354983928, guid: 42f00cbfc4c6dbb4583e29189cc52d78, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2533916685354983928, guid: 42f00cbfc4c6dbb4583e29189cc52d78, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2533916685354983928, guid: 42f00cbfc4c6dbb4583e29189cc52d78, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2533916685354983928, guid: 42f00cbfc4c6dbb4583e29189cc52d78, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2533916685354983928, guid: 42f00cbfc4c6dbb4583e29189cc52d78, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2533916685354983928, guid: 42f00cbfc4c6dbb4583e29189cc52d78, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2533916685354983928, guid: 42f00cbfc4c6dbb4583e29189cc52d78, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2533916685354983928, guid: 42f00cbfc4c6dbb4583e29189cc52d78, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2533916685354983928, guid: 42f00cbfc4c6dbb4583e29189cc52d78, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 42f00cbfc4c6dbb4583e29189cc52d78, type: 3}
+--- !u!4 &3842201629508674470 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2533916685354983928, guid: 42f00cbfc4c6dbb4583e29189cc52d78, type: 3}
+  m_PrefabInstance: {fileID: 1619177977269863006}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2426187103554192665
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -134,7 +217,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e97ea818e799f224695e70454c1c86c6, type: 3}
       propertyPath: m_Name
-      value: astronaut1
+      value: model
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e97ea818e799f224695e70454c1c86c6, type: 3}

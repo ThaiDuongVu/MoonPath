@@ -19,7 +19,7 @@ public class Turret : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    private void FixedUpdate()
     {
         Rotate(rotationVelocity * RotationFactor, head);
     }
@@ -34,10 +34,11 @@ public class Turret : MonoBehaviour
     }
 
     // Rotate based on player's input
-    private static void Rotate(Vector2 speed, Transform target)
+    private void Rotate(Vector2 speed, Transform target)
     {
         if (Time.timeScale == 0f) return;
-        
+
         target.Rotate(0f, speed.x, 0f, Space.World);
+        // target.RotateAround(transform.position, Camera.main.transform.up, speed.x);
     }
 }

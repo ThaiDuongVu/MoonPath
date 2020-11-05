@@ -9,7 +9,7 @@ public class MainCamera : MonoBehaviour
 
 
     // Update is called once per frame
-    private void Update()
+    private void FixedUpdate()
     {
         Follow(followTarget);
         Rotate(rotateTarget);

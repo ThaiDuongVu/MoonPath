@@ -18,14 +18,14 @@ public class Projectile : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    private void FixedUpdate()
     {
-        Move();
+        Fly();
         Rotate(rotationVelocity * RotationFactor, transform);
     }
 
     // Move forward
-    private void Move()
+    private void Fly()
     {
         _characterController.Move(transform.up * (Velocity * Time.deltaTime));
     }
@@ -35,18 +35,16 @@ public class Projectile : MonoBehaviour
     {
         if (Time.timeScale == 0f) return;
 
-        target.Rotate(-speed.y, speed.x, 0f, Space.World);
-
-        Transform transform1 = transform;
-        Quaternion localRotation = transform1.localRotation;
-
-        localRotation = new Quaternion(localRotation.x, 0f, localRotation.z, localRotation.w);
-        transform1.localRotation = localRotation;
+        // target.Rotate(-speed.y, speed.x, 0f, Space.World);
+        target.RotateAround(transform.position, Camera.main.transform.up, speed.x);
+        target.RotateAround(transform.position, Camera.main.transform.right, -speed.y);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         _gameController.ChangeFlowState(FlowState.Aiming);
+        _gameController.RandomizeAsteroids();
+        
         Destroy(gameObject);
     }
 }

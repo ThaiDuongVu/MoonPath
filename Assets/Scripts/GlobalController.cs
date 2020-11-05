@@ -21,11 +21,13 @@ public class GlobalController : MonoBehaviour
 
     [SerializeField] private PostProcessProfile postProcessProfile;
     private DepthOfField _depthOfField;
+    private MotionBlur _motionBlur;
 
     // Awake is called when an object is initialized
     private void Awake()
     {
         postProcessProfile.TryGetSettings(out _depthOfField);
+        postProcessProfile.TryGetSettings(out _motionBlur);
     }
 
     // Start is called before the first frame update
@@ -53,5 +55,17 @@ public class GlobalController : MonoBehaviour
     {
         // _depthOfField.enabled.value = false;
         _depthOfField.focusDistance.value = 3.75f;
+    }
+
+    public void SetMotionBlur(int value)
+    {
+        if (value == 0)
+        {
+            _motionBlur.enabled.value = false;
+        }
+        else
+        {
+            _motionBlur.enabled.value = true;
+        }
     }
 }

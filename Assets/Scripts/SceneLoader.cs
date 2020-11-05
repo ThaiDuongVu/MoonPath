@@ -36,11 +36,15 @@ public class SceneLoader : MonoBehaviour
         // Play transition animation
         _cameraAnimator.SetTrigger(Outro);
 
+        // Load scene in background while animation plays
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Single);
+        asyncOperation.allowSceneActivation = false;
+
         // Delay the load for animation to play
         yield return new WaitForSeconds(30f * Time.unscaledDeltaTime);
 
-        // Once delayed, load scene
-        SceneManager.LoadScene(scene, LoadSceneMode.Single);
+        // Animation done, activate new scene
+        asyncOperation.allowSceneActivation = true;
     }
 
     // Quit game

@@ -119,8 +119,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        // Lock the framerate to the screen's refresh rate (usually 60Hz)
-        // TODO: Add option to toggle this on or off
+        // Lock the framerate to the 60fps
         Application.targetFrameRate = Screen.currentResolution.refreshRate;
 
         // Start the game
@@ -183,12 +182,20 @@ public class GameController : MonoBehaviour
 
     private void SpawnAsteroids()
     {
-        for (int i = 0; i < 200; i++)
+        for (int i = 0; i < 100; i++)
         {
             Vector3 spawnPosition = new Vector3(UnityEngine.Random.Range(-75f, 75f), UnityEngine.Random.Range(-25f, 100f), UnityEngine.Random.Range(50f, 200f));
             Quaternion spawnRotation = new Quaternion(UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f));
 
             asteroids.Add(Instantiate(asteroidPrefabs[UnityEngine.Random.Range(0, asteroidPrefabs.Count)], spawnPosition, spawnRotation));
+        }
+    }
+
+    public void RandomizeAsteroids()
+    {
+        foreach (Asteroid asteroid in asteroids)
+        {
+            asteroid.Randomize();
         }
     }
 
@@ -204,10 +211,7 @@ public class GameController : MonoBehaviour
         else
         {
             turret.enabled = true;
-        }
 
-        if (_flowState == FlowState.Aiming)
-        {
             mainCamera.followTarget = cameraPoint;
             mainCamera.rotateTarget = spawnPoint;
         }
