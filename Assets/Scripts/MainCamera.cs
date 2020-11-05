@@ -5,7 +5,7 @@ public class MainCamera : MonoBehaviour
     public Transform followTarget;
     public Transform rotateTarget;
 
-    private const float InterpolationRatio = 0.0625f;
+    private const float InterpolationRatio = 0.075f;
 
 
     // Update is called once per frame

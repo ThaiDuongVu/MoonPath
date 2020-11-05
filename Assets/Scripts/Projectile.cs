@@ -3,10 +3,10 @@
 public class Projectile : MonoBehaviour
 {
     private CharacterController _characterController;
-    private const float Velocity = 20f;
+    private const float Velocity = 30f;
 
     [HideInInspector] public Vector2 rotationVelocity;
-    private const float RotationFactor = 1.5f;
+    private const float RotationFactor = 2f;
 
     // Awake is called when object is initialized
     private void Awake()

@@ -17,6 +17,9 @@ public class GameController : MonoBehaviour
     public List<Projectile> projectiles = new List<Projectile>();
     private Projectile _currentProjectile;
 
+    public List<Asteroid> asteroidPrefabs = new List<Asteroid>();
+    private List<Asteroid> asteroids = new List<Asteroid>();
+
     private InputManager _inputManager;
 
     private void OnEnable()
@@ -68,7 +71,6 @@ public class GameController : MonoBehaviour
         mainCamera.rotateTarget = currentProjectileTransform;
 
         ChangeFlowState(FlowState.Flying);
-
     }
 
     private void AimOnPerformed(InputAction.CallbackContext context)
@@ -125,6 +127,8 @@ public class GameController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         GlobalController.Instance.DisableDepthOfField();
+
+        SpawnAsteroids();
     }
 
     // Pause game
@@ -175,6 +179,18 @@ public class GameController : MonoBehaviour
         // TODO: Freeze game
     }
 
+    private void SpawnAsteroids()
+    {
+        for (int i = 0; i < 200; i++)
+        {
+            Vector3 spawnPosition = new Vector3(UnityEngine.Random.Range(-75f, 75f), UnityEngine.Random.Range(-25f, 100f), UnityEngine.Random.Range(50f, 200f));
+            Quaternion spawnRotation = new Quaternion(UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f) , UnityEngine.Random.Range(0f, 1f));
+            
+            asteroids.Add(Instantiate(asteroidPrefabs[UnityEngine.Random.Range(0, asteroidPrefabs.Count)], spawnPosition, spawnRotation));
+        }
+    }
+
+    // Change the game's flow state to a new state
     private void ChangeFlowState(FlowState newState)
     {
         _flowState = newState;
@@ -182,6 +198,10 @@ public class GameController : MonoBehaviour
         if (_flowState != FlowState.Aiming)
         {
             turret.enabled = false;
+        }
+        else
+        {
+            turret.enabled = true;
         }
     }
 }
