@@ -61,11 +61,11 @@ public class GlobalController : MonoBehaviour
     {
         if (value == 0)
         {
-            _motionBlur.enabled.value = false;
+            _motionBlur.enabled.value = true;
         }
         else
         {
-            _motionBlur.enabled.value = true;
+            _motionBlur.enabled.value = false;
         }
     }
 }

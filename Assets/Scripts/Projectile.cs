@@ -42,9 +42,16 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        _gameController.ChangeFlowState(FlowState.Aiming);
-        _gameController.RandomizeAsteroids();
-        
-        Destroy(gameObject);
+        if (other.CompareTag("Moon"))
+        {
+            _gameController.ChangeFlowState(FlowState.Aiming);
+            _gameController.RandomizeAsteroids();
+            
+            Destroy(gameObject);
+        }
+        else if (other.CompareTag("Asteroid"))
+        {
+            CameraShake.Instance.ShakeNormal();
+        }
     }
 }
