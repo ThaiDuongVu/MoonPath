@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea245c6c931fc0c45a739a0d95052cde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableOnStartup: 1
+  disableOnStartup: 0
   tileManager: {fileID: 7385286328845890633}
   tileSelector: {fileID: 1458699539596783501}
   background: {fileID: 4961301407291524700}
@@ -81,9 +81,33 @@ PrefabInstance:
     m_TransformParent: {fileID: 7385286329790971407}
     m_Modifications:
     - target: {fileID: 440255132116386787, guid: 3c1ab21dfd1042b408aff102ba64b135, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 440255132116386787, guid: 3c1ab21dfd1042b408aff102ba64b135, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 3648577212767752566}
+    - target: {fileID: 440255132116386787, guid: 3c1ab21dfd1042b408aff102ba64b135, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: GlobalController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 440255132116386787, guid: 3c1ab21dfd1042b408aff102ba64b135, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: EnableDepthOfField
+      objectReference: {fileID: 0}
+    - target: {fileID: 440255132116386787, guid: 3c1ab21dfd1042b408aff102ba64b135, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 440255132116386787, guid: 3c1ab21dfd1042b408aff102ba64b135, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 440255132116386787, guid: 3c1ab21dfd1042b408aff102ba64b135, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8233593083768348840, guid: 3c1ab21dfd1042b408aff102ba64b135, type: 3}
       propertyPath: m_Name
       value: Tiles
