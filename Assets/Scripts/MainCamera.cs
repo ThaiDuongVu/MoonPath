@@ -8,6 +8,8 @@ public class MainCamera : MonoBehaviour
 
     private const float InterpolationRatio = 0.075f;
 
+    [SerializeField] private GameController _gameController;
+
     private Animator _animator;
 
     private InputManager _inputManager;
@@ -29,16 +31,22 @@ public class MainCamera : MonoBehaviour
 
     private void BoostOnPerformed(InputAction.CallbackContext context)
     {
+        if (_gameController is null || Time.deltaTime == 0f) return;
+
         _animator.SetBool("isBoosting", true);
     }
 
     private void BrakeOnPerformed(InputAction.CallbackContext context)
     {
+        if (_gameController is null || Time.deltaTime == 0f) return;
+
         _animator.SetBool("isBraking", true);
     }
 
     private void BoostBrakeOnCanceled(InputAction.CallbackContext context)
     {
+        if (_gameController is null || Time.deltaTime == 0f) return;
+
         _animator.SetBool("isBoosting", false);
         _animator.SetBool("isBraking", false);
     }

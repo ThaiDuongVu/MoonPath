@@ -223,3 +223,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   followTarget: {fileID: 0}
   rotateTarget: {fileID: 0}
+  _gameController: {fileID: 0}

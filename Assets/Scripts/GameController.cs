@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private Menu[] menus;
 
-    private FlowState _flowState;
+    public FlowState flowState;
     [SerializeField] private Turret turret;
 
     public MainCamera mainCamera;
@@ -62,7 +62,7 @@ public class GameController : MonoBehaviour
 
     private void ShootOnPerformed(InputAction.CallbackContext context)
     {
-        if (_flowState != FlowState.Aiming) return;
+        if (flowState != FlowState.Aiming || Time.deltaTime == 0f) return;
 
         turret.Shoot();
 
@@ -77,7 +77,7 @@ public class GameController : MonoBehaviour
 
     private void AimOnPerformed(InputAction.CallbackContext context)
     {
-        switch (_flowState)
+        switch (flowState)
         {
             case FlowState.Aiming:
                 turret.rotationVelocity = context.ReadValue<Vector2>();
@@ -94,7 +94,7 @@ public class GameController : MonoBehaviour
 
     private void AimOnCanceled(InputAction.CallbackContext context)
     {
-        switch (_flowState)
+        switch (flowState)
         {
             case FlowState.Aiming:
                 turret.rotationVelocity = Vector2.zero;
@@ -202,9 +202,9 @@ public class GameController : MonoBehaviour
     // Change the game's flow state to a new state
     public void ChangeFlowState(FlowState newState)
     {
-        _flowState = newState;
+        flowState = newState;
 
-        if (_flowState != FlowState.Aiming)
+        if (flowState != FlowState.Aiming)
         {
             turret.enabled = false;
         }

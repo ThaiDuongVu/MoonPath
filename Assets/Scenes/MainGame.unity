@@ -288,6 +288,10 @@ PrefabInstance:
       propertyPath: rotateTarget
       value: 
       objectReference: {fileID: 1070850163}
+    - target: {fileID: 3440825006434858736, guid: adc67e397cf523e44b790e418bd35eed, type: 3}
+      propertyPath: _gameController
+      value: 
+      objectReference: {fileID: 1095135418}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adc67e397cf523e44b790e418bd35eed, type: 3}
 --- !u!114 &120734704 stripped
