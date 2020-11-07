@@ -43,7 +43,6 @@ public class BoxObjectPool : MonoBehaviour
         box.Activate(false);
         _pooledObjects.Add(box);
         return box;
-
     }
 
     // Deactivate all the objects in the pool.

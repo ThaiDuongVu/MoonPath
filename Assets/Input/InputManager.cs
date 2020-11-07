@@ -8,10 +8,11 @@ using UnityEngine.InputSystem.Utilities;
 
 public class @InputManager : IInputActionCollection, IDisposable
 {
-    public InputActionAsset asset { get; }
+    private InputActionAsset Asset { get; }
+
     public @InputManager()
     {
-        asset = InputActionAsset.FromJson(@"{
+        Asset = InputActionAsset.FromJson(@"{
     ""name"": ""InputManager"",
     ""maps"": [
         {
@@ -747,49 +748,49 @@ public class @InputManager : IInputActionCollection, IDisposable
     ]
 }");
         // Player
-        m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
+        m_Player = Asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_Boost = m_Player.FindAction("Boost", throwIfNotFound: true);
         m_Player_Brake = m_Player.FindAction("Brake", throwIfNotFound: true);
         // Game
-        m_Game = asset.FindActionMap("Game", throwIfNotFound: true);
+        m_Game = Asset.FindActionMap("Game", throwIfNotFound: true);
         m_Game_Direction = m_Game.FindAction("Direction", throwIfNotFound: true);
         m_Game_Click = m_Game.FindAction("Click", throwIfNotFound: true);
         m_Game_Escape = m_Game.FindAction("Escape", throwIfNotFound: true);
         // Console
-        m_Console = asset.FindActionMap("Console", throwIfNotFound: true);
+        m_Console = Asset.FindActionMap("Console", throwIfNotFound: true);
         m_Console_Show = m_Console.FindAction("Show", throwIfNotFound: true);
         m_Console_Enter = m_Console.FindAction("Enter", throwIfNotFound: true);
     }
 
     public void Dispose()
     {
-        UnityEngine.Object.Destroy(asset);
+        UnityEngine.Object.Destroy(Asset);
     }
 
     public InputBinding? bindingMask
     {
-        get => asset.bindingMask;
-        set => asset.bindingMask = value;
+        get => Asset.bindingMask;
+        set => Asset.bindingMask = value;
     }
 
     public ReadOnlyArray<InputDevice>? devices
     {
-        get => asset.devices;
-        set => asset.devices = value;
+        get => Asset.devices;
+        set => Asset.devices = value;
     }
 
-    public ReadOnlyArray<InputControlScheme> controlSchemes => asset.controlSchemes;
+    public ReadOnlyArray<InputControlScheme> controlSchemes => Asset.controlSchemes;
 
     public bool Contains(InputAction action)
     {
-        return asset.Contains(action);
+        return Asset.Contains(action);
     }
 
     public IEnumerator<InputAction> GetEnumerator()
     {
-        return asset.GetEnumerator();
+        return Asset.GetEnumerator();
     }
 
     IEnumerator IEnumerable.GetEnumerator()
@@ -799,12 +800,12 @@ public class @InputManager : IInputActionCollection, IDisposable
 
     public void Enable()
     {
-        asset.Enable();
+        Asset.Enable();
     }
 
     public void Disable()
     {
-        asset.Disable();
+        Asset.Disable();
     }
 
     // Player
@@ -814,19 +815,43 @@ public class @InputManager : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_Boost;
     private readonly InputAction m_Player_Brake;
+
     public struct PlayerActions
     {
         private @InputManager m_Wrapper;
-        public PlayerActions(@InputManager wrapper) { m_Wrapper = wrapper; }
+
+        public PlayerActions(@InputManager wrapper)
+        {
+            m_Wrapper = wrapper;
+        }
+
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputAction @Boost => m_Wrapper.m_Player_Boost;
         public InputAction @Brake => m_Wrapper.m_Player_Brake;
-        public InputActionMap Get() { return m_Wrapper.m_Player; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
+
+        public InputActionMap Get()
+        {
+            return m_Wrapper.m_Player;
+        }
+
+        public void Enable()
+        {
+            Get().Enable();
+        }
+
+        public void Disable()
+        {
+            Get().Disable();
+        }
+
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
+
+        public static implicit operator InputActionMap(PlayerActions set)
+        {
+            return set.Get();
+        }
+
         public void SetCallbacks(IPlayerActions instance)
         {
             if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
@@ -844,6 +869,7 @@ public class @InputManager : IInputActionCollection, IDisposable
                 @Brake.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBrake;
                 @Brake.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBrake;
             }
+
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
             {
@@ -862,6 +888,7 @@ public class @InputManager : IInputActionCollection, IDisposable
             }
         }
     }
+
     public PlayerActions @Player => new PlayerActions(this);
 
     // Game
@@ -870,18 +897,42 @@ public class @InputManager : IInputActionCollection, IDisposable
     private readonly InputAction m_Game_Direction;
     private readonly InputAction m_Game_Click;
     private readonly InputAction m_Game_Escape;
+
     public struct GameActions
     {
         private @InputManager m_Wrapper;
-        public GameActions(@InputManager wrapper) { m_Wrapper = wrapper; }
+
+        public GameActions(@InputManager wrapper)
+        {
+            m_Wrapper = wrapper;
+        }
+
         public InputAction @Direction => m_Wrapper.m_Game_Direction;
         public InputAction @Click => m_Wrapper.m_Game_Click;
         public InputAction @Escape => m_Wrapper.m_Game_Escape;
-        public InputActionMap Get() { return m_Wrapper.m_Game; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
+
+        public InputActionMap Get()
+        {
+            return m_Wrapper.m_Game;
+        }
+
+        public void Enable()
+        {
+            Get().Enable();
+        }
+
+        public void Disable()
+        {
+            Get().Disable();
+        }
+
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(GameActions set) { return set.Get(); }
+
+        public static implicit operator InputActionMap(GameActions set)
+        {
+            return set.Get();
+        }
+
         public void SetCallbacks(IGameActions instance)
         {
             if (m_Wrapper.m_GameActionsCallbackInterface != null)
@@ -896,6 +947,7 @@ public class @InputManager : IInputActionCollection, IDisposable
                 @Escape.performed -= m_Wrapper.m_GameActionsCallbackInterface.OnEscape;
                 @Escape.canceled -= m_Wrapper.m_GameActionsCallbackInterface.OnEscape;
             }
+
             m_Wrapper.m_GameActionsCallbackInterface = instance;
             if (instance != null)
             {
@@ -911,6 +963,7 @@ public class @InputManager : IInputActionCollection, IDisposable
             }
         }
     }
+
     public GameActions @Game => new GameActions(this);
 
     // Console
@@ -918,17 +971,41 @@ public class @InputManager : IInputActionCollection, IDisposable
     private IConsoleActions m_ConsoleActionsCallbackInterface;
     private readonly InputAction m_Console_Show;
     private readonly InputAction m_Console_Enter;
+
     public struct ConsoleActions
     {
         private @InputManager m_Wrapper;
-        public ConsoleActions(@InputManager wrapper) { m_Wrapper = wrapper; }
+
+        public ConsoleActions(@InputManager wrapper)
+        {
+            m_Wrapper = wrapper;
+        }
+
         public InputAction @Show => m_Wrapper.m_Console_Show;
         public InputAction @Enter => m_Wrapper.m_Console_Enter;
-        public InputActionMap Get() { return m_Wrapper.m_Console; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
+
+        public InputActionMap Get()
+        {
+            return m_Wrapper.m_Console;
+        }
+
+        public void Enable()
+        {
+            Get().Enable();
+        }
+
+        public void Disable()
+        {
+            Get().Disable();
+        }
+
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(ConsoleActions set) { return set.Get(); }
+
+        public static implicit operator InputActionMap(ConsoleActions set)
+        {
+            return set.Get();
+        }
+
         public void SetCallbacks(IConsoleActions instance)
         {
             if (m_Wrapper.m_ConsoleActionsCallbackInterface != null)
@@ -940,6 +1017,7 @@ public class @InputManager : IInputActionCollection, IDisposable
                 @Enter.performed -= m_Wrapper.m_ConsoleActionsCallbackInterface.OnEnter;
                 @Enter.canceled -= m_Wrapper.m_ConsoleActionsCallbackInterface.OnEnter;
             }
+
             m_Wrapper.m_ConsoleActionsCallbackInterface = instance;
             if (instance != null)
             {
@@ -952,25 +1030,31 @@ public class @InputManager : IInputActionCollection, IDisposable
             }
         }
     }
+
     public ConsoleActions @Console => new ConsoleActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
+
     public InputControlScheme KeyboardMouseScheme
     {
         get
         {
-            if (m_KeyboardMouseSchemeIndex == -1) m_KeyboardMouseSchemeIndex = asset.FindControlSchemeIndex("KeyboardMouse");
-            return asset.controlSchemes[m_KeyboardMouseSchemeIndex];
+            if (m_KeyboardMouseSchemeIndex == -1)
+                m_KeyboardMouseSchemeIndex = Asset.FindControlSchemeIndex("KeyboardMouse");
+            return Asset.controlSchemes[m_KeyboardMouseSchemeIndex];
         }
     }
+
     private int m_GamepadSchemeIndex = -1;
+
     public InputControlScheme GamepadScheme
     {
         get
         {
-            if (m_GamepadSchemeIndex == -1) m_GamepadSchemeIndex = asset.FindControlSchemeIndex("Gamepad");
-            return asset.controlSchemes[m_GamepadSchemeIndex];
+            if (m_GamepadSchemeIndex == -1) m_GamepadSchemeIndex = Asset.FindControlSchemeIndex("Gamepad");
+            return Asset.controlSchemes[m_GamepadSchemeIndex];
         }
     }
+
     public interface IPlayerActions
     {
         void OnShoot(InputAction.CallbackContext context);
@@ -978,12 +1062,14 @@ public class @InputManager : IInputActionCollection, IDisposable
         void OnBoost(InputAction.CallbackContext context);
         void OnBrake(InputAction.CallbackContext context);
     }
+
     public interface IGameActions
     {
         void OnDirection(InputAction.CallbackContext context);
         void OnClick(InputAction.CallbackContext context);
         void OnEscape(InputAction.CallbackContext context);
     }
+
     public interface IConsoleActions
     {
         void OnShow(InputAction.CallbackContext context);

@@ -18,10 +18,13 @@ public class Projectile : MonoBehaviour
     private const float RotationFactor = 2f;
 
     private Animator _animator;
+    private static readonly int IsBoosting = Animator.StringToHash("isBoosting");
+    private static readonly int IsBraking = Animator.StringToHash("isBraking");
 
     private GameController _gameController;
 
     private InputManager _inputManager;
+    private Camera _camera;
 
     private void OnEnable()
     {
@@ -41,21 +44,21 @@ public class Projectile : MonoBehaviour
     private void BoostOnPerformed(InputAction.CallbackContext context)
     {
         _targetVelocity = BoostVelocity;
-        _animator.SetBool("isBoosting", true);
+        _animator.SetBool(IsBoosting, true);
     }
 
     private void BrakeOnPerformed(InputAction.CallbackContext context)
     {
         _targetVelocity = BrakeVelocity;
-        _animator.SetBool("isBraking", true);
+        _animator.SetBool(IsBraking, true);
     }
 
     private void BoostBrakeOnCanceled(InputAction.CallbackContext context)
     {
         _targetVelocity = NormalVelocity;
 
-        _animator.SetBool("isBoosting", false);
-        _animator.SetBool("isBraking", false);
+        _animator.SetBool(IsBoosting, false);
+        _animator.SetBool(IsBraking, false);
     }
 
     #endregion
@@ -68,6 +71,7 @@ public class Projectile : MonoBehaviour
     // Awake is called when object is initialized
     private void Awake()
     {
+        _camera = Camera.main;
         _characterController = GetComponent<CharacterController>();
         _gameController = FindObjectOfType<GameController>();
 
@@ -84,6 +88,8 @@ public class Projectile : MonoBehaviour
 
         Accelerate(_targetVelocity);
     }
+
+    #region Movement Methods
 
     // Move forward
     private void Fly()
@@ -104,14 +110,17 @@ public class Projectile : MonoBehaviour
         }
     }
 
+    #endregion
+
     // Rotate based on player's input
     private void Rotate(Vector2 speed, Transform target)
     {
         if (Time.timeScale == 0f) return;
 
         // target.Rotate(-speed.y, speed.x, 0f, Space.World);
-        target.RotateAround(transform.position, Camera.main.transform.up, speed.x);
-        target.RotateAround(transform.position, Camera.main.transform.right, -speed.y);
+        Vector3 position = transform.position;
+        target.RotateAround(position, _camera.transform.up, speed.x);
+        target.RotateAround(position, _camera.transform.right, -speed.y);
     }
 
     #region Trigger Methods

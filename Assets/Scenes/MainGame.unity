@@ -289,7 +289,7 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1070850163}
     - target: {fileID: 3440825006434858736, guid: adc67e397cf523e44b790e418bd35eed, type: 3}
-      propertyPath: _gameController
+      propertyPath: gameController
       value: 
       objectReference: {fileID: 1095135418}
     m_RemovedComponents: []
@@ -1536,6 +1536,18 @@ PrefabInstance:
     - target: {fileID: 8267525375337835686, guid: 2faf7d7f682aa6542b883a7f3ae89dc2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8267525375337835687, guid: 2faf7d7f682aa6542b883a7f3ae89dc2, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8267525375337835687, guid: 2faf7d7f682aa6542b883a7f3ae89dc2, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 2.8884e-41
+      objectReference: {fileID: 0}
+    - target: {fileID: 8267525375337835687, guid: 2faf7d7f682aa6542b883a7f3ae89dc2, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: -13.5625
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2faf7d7f682aa6542b883a7f3ae89dc2, type: 3}

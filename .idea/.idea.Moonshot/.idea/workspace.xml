@@ -20,64 +20,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="09ee59db-21bb-46c6-936b-9a1782467298" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/OffScreenIndicator.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OffScreenIndicator/Prefabs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OffScreenIndicator/Prefabs/ArrowIndicator.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OffScreenIndicator/Prefabs/ArrowIndicator.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OffScreenIndicator/Prefabs/BoxIndicator.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OffScreenIndicator/Prefabs/BoxIndicator.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OffScreenIndicator/Prefabs/OffScreenIndicator.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OffScreenIndicator/Prefabs/OffScreenIndicator.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OffScreenIndicator/Scripts.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OffScreenIndicator/Scripts/ArrowObjectPool.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OffScreenIndicator/Scripts/ArrowObjectPool.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OffScreenIndicator/Scripts/BoxObjectPool.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OffScreenIndicator/Scripts/BoxObjectPool.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OffScreenIndicator/Scripts/Indicator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OffScreenIndicator/Scripts/Indicator.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OffScreenIndicator/Scripts/IndicatorTarget.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OffScreenIndicator/Scripts/IndicatorTarget.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OffScreenIndicator/Scripts/OffScreenIndicator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OffScreenIndicator/Scripts/OffScreenIndicator.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OffScreenIndicator/Scripts/OffScreenIndicatorCore.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OffScreenIndicator/Scripts/OffScreenIndicatorCore.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OffScreenIndicator/Scripts/Utilities.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OffScreenIndicator/Scripts/Utilities/ExtendedFlycam.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OffScreenIndicator/Scripts/Utilities/ExtendedFlycam.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OffScreenIndicator/Sprites.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OffScreenIndicator/Sprites/Arrow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OffScreenIndicator/Sprites/Arrow.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OffScreenIndicator/Sprites/Box.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/OffScreenIndicator/Sprites/Box.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shaders/Outline.shader" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shaders/Outline.shader.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shaders/ToonShader 1.shader" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Shaders/ToonShader 1.shader.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Input.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Input/InputManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Input/InputManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Input/InputManager.inputactions" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Input/InputManager.inputactions.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OffScreenIndicatorSystem/Scripts/IndicatorType.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/OffScreenIndicatorSystem/Scripts/IndicatorType.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Moonshot/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Moonshot/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Moonshot/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Moonshot/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Moonshot/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Moonshot/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Sky.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Sky.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/moon.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/moon.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Camera.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Camera.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Moon.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Moon.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj.DotSettings" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj.DotSettings" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OffScreenIndicatorSystem/Scripts/BoxObjectPool.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/OffScreenIndicatorSystem/Scripts/BoxObjectPool.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OffScreenIndicatorSystem/Scripts/Indicator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/OffScreenIndicatorSystem/Scripts/Indicator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/OffScreenIndicatorSystem/Scripts/Utilities.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainGame.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PostProcessingProfile.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PostProcessingProfile.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Asteroid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Asteroid.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GlobalController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GlobalController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LightSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LightSource.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.inputactions" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.inputactions.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/MainCamera.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MainCamera.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Projectile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Projectile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Turret.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Turret.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/UI/Button.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/UI/Button.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/UI/ButtonPressed.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/UI/ButtonPressed.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/UI/Crosshair.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/UI/Crosshair.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/UI/Crosshair.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/UI/Crosshair.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/background.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/background.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/space.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/space.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/space2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/space2.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/textures.svg" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/textures.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,16 +65,24 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/DebugCommandSystem/DebugCommand.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/DebugCommandSystem/DebugConsole.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Input/InputManager.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/GameController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/LightSource.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/MainCamera.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Projectile.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Turret.cs" />
         <option value="$PROJECT_DIR$/Assets/OffScreenIndicator/Scripts/ArrowObjectPool.cs" />
         <option value="$PROJECT_DIR$/Assets/OffScreenIndicator/Scripts/BoxObjectPool.cs" />
         <option value="$PROJECT_DIR$/Assets/OffScreenIndicator/Scripts/Indicator.cs" />
         <option value="$PROJECT_DIR$/Assets/OffScreenIndicator/Scripts/OffScreenIndicator.cs" />
         <option value="$PROJECT_DIR$/Assets/OffScreenIndicator/Scripts/OffScreenIndicatorCore.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Asteroid.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GlobalController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/MainCamera.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Projectile.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Turret.cs" />
+        <option value="$PROJECT_DIR$/Assets/OffScreenIndicatorSystem/Scripts/BoxObjectPool.cs" />
+        <option value="$PROJECT_DIR$/Assets/OffScreenIndicatorSystem/Scripts/Indicator.cs" />
+        <option value="$PROJECT_DIR$/Assets/OffScreenIndicatorSystem/Scripts/IndicatorType.cs" />
+        <option value="$PROJECT_DIR$/Assets/OffScreenIndicatorSystem/Scripts/OffScreenIndicator.cs" />
+        <option value="$PROJECT_DIR$/Assets/OffScreenIndicatorSystem/Scripts/OffScreenIndicatorCore.cs" />
+        <option value="$PROJECT_DIR$/Assets/Input/InputManager.cs" />
       </list>
     </option>
   </component>
@@ -164,6 +140,7 @@
       <updated>1604358015768</updated>
       <workItem from="1604358052868" duration="710000" />
       <workItem from="1604519848629" duration="1022000" />
+      <workItem from="1604711868370" duration="931000" />
     </task>
     <servers />
   </component>
@@ -182,6 +159,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

@@ -44,9 +44,3 @@ public class Indicator : MonoBehaviour
         transform.gameObject.SetActive(value);
     }
 }
-
-public enum IndicatorType
-{
-    Box,
-    Arrow
-}

@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour
     private Projectile _currentProjectile;
 
     public List<Asteroid> asteroidPrefabs = new List<Asteroid>();
-    private List<Asteroid> asteroids = new List<Asteroid>();
+    private readonly List<Asteroid> _asteroids = new List<Asteroid>();
 
     private InputManager _inputManager;
 
@@ -187,13 +187,13 @@ public class GameController : MonoBehaviour
             Vector3 spawnPosition = new Vector3(UnityEngine.Random.Range(-75f, 75f), UnityEngine.Random.Range(-25f, 100f), UnityEngine.Random.Range(50f, 200f));
             Quaternion spawnRotation = new Quaternion(UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f));
 
-            asteroids.Add(Instantiate(asteroidPrefabs[UnityEngine.Random.Range(0, asteroidPrefabs.Count)], spawnPosition, spawnRotation));
+            _asteroids.Add(Instantiate(asteroidPrefabs[UnityEngine.Random.Range(0, asteroidPrefabs.Count)], spawnPosition, spawnRotation));
         }
     }
 
     public void RandomizeAsteroids()
     {
-        foreach (Asteroid asteroid in asteroids)
+        foreach (Asteroid asteroid in _asteroids)
         {
             asteroid.Randomize();
         }

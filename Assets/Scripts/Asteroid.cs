@@ -16,14 +16,17 @@ public class Asteroid : MonoBehaviour
 
     public void Randomize()
     {
-        transform.position = new Vector3(UnityEngine.Random.Range(-75f, 75f), UnityEngine.Random.Range(-25f, 100f), UnityEngine.Random.Range(50f, 200f));
+        transform.position = new Vector3(Random.Range(-75f, 75f), Random.Range(-25f, 100f), Random.Range(50f, 200f));
     }
 
     private void Float()
     {
         if (Time.timeScale == 0f) return;
 
-        transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x + Random.Range(-FloatingRange, FloatingRange), transform.position.y + Random.Range(-FloatingRange, FloatingRange), transform.position.z + Random.Range(-FloatingRange, FloatingRange)), InterpolationRatio);
+        Vector3 position = transform.position;
+        position = Vector3.Lerp(position, new Vector3(position.x + Random.Range(-FloatingRange, FloatingRange), position.y + Random.Range(-FloatingRange, FloatingRange), position.z + Random.Range(-FloatingRange, FloatingRange)), InterpolationRatio);
+
+        transform.position = position;
     }
 
     private void Rotate()

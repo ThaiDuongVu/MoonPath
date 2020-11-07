@@ -8,9 +8,11 @@ public class MainCamera : MonoBehaviour
 
     private const float InterpolationRatio = 0.075f;
 
-    [SerializeField] private GameController _gameController;
+    [SerializeField] private GameController gameController;
 
     private Animator _animator;
+    private static readonly int IsBoosting = Animator.StringToHash("isBoosting");
+    private static readonly int IsBraking = Animator.StringToHash("isBraking");
 
     private InputManager _inputManager;
 
@@ -31,24 +33,24 @@ public class MainCamera : MonoBehaviour
 
     private void BoostOnPerformed(InputAction.CallbackContext context)
     {
-        if (_gameController is null || Time.deltaTime == 0f) return;
+        if (gameController is null || Time.deltaTime == 0f) return;
 
-        _animator.SetBool("isBoosting", true);
+        _animator.SetBool(IsBoosting, true);
     }
 
     private void BrakeOnPerformed(InputAction.CallbackContext context)
     {
-        if (_gameController is null || Time.deltaTime == 0f) return;
+        if (gameController is null || Time.deltaTime == 0f) return;
 
-        _animator.SetBool("isBraking", true);
+        _animator.SetBool(IsBraking, true);
     }
 
     private void BoostBrakeOnCanceled(InputAction.CallbackContext context)
     {
-        if (_gameController is null || Time.deltaTime == 0f) return;
+        if (gameController is null || Time.deltaTime == 0f) return;
 
-        _animator.SetBool("isBoosting", false);
-        _animator.SetBool("isBraking", false);
+        _animator.SetBool(IsBoosting, false);
+        _animator.SetBool(IsBraking, false);
     }
 
     #endregion
@@ -73,7 +75,7 @@ public class MainCamera : MonoBehaviour
 
     private void Follow(Transform target)
     {
-        if (target == null || Time.deltaTime == 0f) return;
+        if (target is null || Time.deltaTime == 0f) return;
 
         Vector3 targetPosition = target.position;
         Vector3 lerpPosition = new Vector3(targetPosition.x, targetPosition.y + 1f, targetPosition.z);
@@ -83,7 +85,7 @@ public class MainCamera : MonoBehaviour
 
     private void Rotate(Transform target)
     {
-        if (target == null || Time.deltaTime == 0f) return;
+        if (target is null || Time.deltaTime == 0f) return;
 
         transform.forward = Vector3.Lerp(transform.forward, target.up, InterpolationRatio);
     }

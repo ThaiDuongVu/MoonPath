@@ -171,34 +171,36 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="csc.rsp" t="Include" />
-        <e p="OffScreenIndicator" t="Include">
+        <e p="DebugCommandSystem" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="DebugCommand.cs" t="Include" />
+            <e p="DebugConsole.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Input" t="Include">
+          <e p="InputManager.cs" t="Include" />
+        </e>
+        <e p="OffScreenIndicatorSystem" t="Include">
           <e p="Scripts" t="Include">
             <e p="ArrowObjectPool.cs" t="Include" />
             <e p="BoxObjectPool.cs" t="Include" />
             <e p="Indicator.cs" t="Include" />
             <e p="IndicatorTarget.cs" t="Include" />
+            <e p="IndicatorType.cs" t="Include" />
             <e p="OffScreenIndicator.cs" t="Include" />
             <e p="OffScreenIndicatorCore.cs" t="Include" />
-            <e p="Utilities" t="Include">
-              <e p="ExtendedFlycam.cs" t="Include" />
-            </e>
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="Asteroid.cs" t="Include" />
           <e p="CameraShake.cs" t="Include" />
-          <e p="DebugCommandSystem" t="Include">
-            <e p="DebugCommand.cs" t="Include" />
-            <e p="DebugConsole.cs" t="Include" />
-          </e>
           <e p="FlowState.cs" t="Include" />
           <e p="GameController.cs" t="Include" />
           <e p="GameState.cs" t="Include" />
           <e p="GlobalController.cs" t="Include" />
-          <e p="Input" t="Include">
-            <e p="InputManager.cs" t="Include" />
-          </e>
           <e p="LightSource.cs" t="Include" />
           <e p="MainCamera.cs" t="Include" />
+          <e p="Planet.cs" t="Include" />
           <e p="Projectile.cs" t="Include" />
           <e p="SceneLoader.cs" t="Include" />
           <e p="Settings" t="Include">
@@ -206,15 +208,7 @@
             <e p="SettingsController.cs" t="Include" />
           </e>
           <e p="Turret.cs" t="Include" />
-          <e p="UI" t="Include">
-            <e p="Menu.cs" t="Include" />
-            <e p="TileSystem" t="Include">
-              <e p="Tile.cs" t="Include" />
-              <e p="TileManager.cs" t="Include" />
-              <e p="TileSelector.cs" t="Include" />
-            </e>
-            <e p="UIController.cs" t="Include" />
-          </e>
+          <e p="UIController.cs" t="Include" />
         </e>
         <e p="Shaders" t="Include">
           <e p="Outline.shader" t="Include" />
@@ -247,6 +241,14 @@
           </e>
           <e p="Sprites" t="Include">
             <e p="EmojiOne Attribution.txt" t="Include" />
+          </e>
+        </e>
+        <e p="TileSystem" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="Menu.cs" t="Include" />
+            <e p="Tile.cs" t="Include" />
+            <e p="TileManager.cs" t="Include" />
+            <e p="TileSelector.cs" t="Include" />
           </e>
         </e>
       </e>
@@ -464,8 +466,9 @@
               </e>
             </e>
           </e>
-          <e p="com.unity.ide.visualstudio@2.0.3" t="Include">
+          <e p="com.unity.ide.visualstudio@2.0.5" t="Include">
             <e p="Editor" t="Include">
+              <e p="AssemblyInfo.cs" t="Include" />
               <e p="com.unity.ide.visualstudio.asmdef" t="Include" />
               <e p="Discovery.cs" t="Include" />
               <e p="FileUtility.cs" t="Include" />
