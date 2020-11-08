@@ -11,7 +11,6 @@ public class Asteroid : MonoBehaviour
     private void Update()
     {
         Float();
-        Rotate();
     }
 
     public void Randomize()
@@ -27,10 +26,5 @@ public class Asteroid : MonoBehaviour
         position = Vector3.Lerp(position, new Vector3(position.x + Random.Range(-FloatingRange, FloatingRange), position.y + Random.Range(-FloatingRange, FloatingRange), position.z + Random.Range(-FloatingRange, FloatingRange)), InterpolationRatio);
 
         transform.position = position;
-    }
-
-    private void Rotate()
-    {
-        transform.Rotate(0f, RotateSpeed, 0f, Space.Self);
     }
 }

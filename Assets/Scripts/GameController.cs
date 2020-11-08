@@ -9,18 +9,21 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private Menu[] menus;
 
-    public FlowState flowState;
+    [HideInInspector] public FlowState flowState;
     [SerializeField] private Turret turret;
 
     public MainCamera mainCamera;
     public Transform cameraPoint;
     public Transform spawnPoint;
 
-    public List<Projectile> projectiles = new List<Projectile>();
+    [SerializeField] private List<Projectile> projectiles = new List<Projectile>();
     private Projectile _currentProjectile;
 
-    public List<Asteroid> asteroidPrefabs = new List<Asteroid>();
+    [SerializeField] private List<Asteroid> asteroidPrefabs = new List<Asteroid>();
     private readonly List<Asteroid> _asteroids = new List<Asteroid>();
+    private const int AsteroidLimit = 100;
+
+    [SerializeField] private Coin coinPrefab;
 
     private InputManager _inputManager;
 
@@ -31,8 +34,10 @@ public class GameController : MonoBehaviour
         // Handle game pause input
         _inputManager.Game.Escape.performed += EscapeOnPerformed;
 
+        // Handle shoot input
         _inputManager.Player.Shoot.performed += ShootOnPerformed;
 
+        // Handle aim input
         _inputManager.Player.Aim.performed += AimOnPerformed;
         _inputManager.Player.Aim.canceled += AimOnCanceled;
 
@@ -182,7 +187,7 @@ public class GameController : MonoBehaviour
 
     private void SpawnAsteroids()
     {
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < AsteroidLimit; i++)
         {
             Vector3 spawnPosition = new Vector3(UnityEngine.Random.Range(-75f, 75f), UnityEngine.Random.Range(-25f, 100f), UnityEngine.Random.Range(50f, 200f));
             Quaternion spawnRotation = new Quaternion(UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f));

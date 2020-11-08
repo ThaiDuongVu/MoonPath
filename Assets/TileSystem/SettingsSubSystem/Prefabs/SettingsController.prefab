@@ -482,7 +482,7 @@ PrefabInstance:
     - target: {fileID: 4842446022729546612, guid: 155f7a0f442fbf143857613532596940, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b9b7300592e317442a5c0fe20b8dd2b1, type: 3}
+      objectReference: {fileID: 21300000, guid: 5b8c7aa2a27fc0649bdb5298472bbb8f, type: 3}
     - target: {fileID: 6892877288403348313, guid: 155f7a0f442fbf143857613532596940, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -685,9 +685,33 @@ PrefabInstance:
     m_TransformParent: {fileID: 189808622842258211}
     m_Modifications:
     - target: {fileID: 443575149, guid: 63747b4d87527434dace70992c78a5e5, type: 3}
+      propertyPath: toggles.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 443575149, guid: 63747b4d87527434dace70992c78a5e5, type: 3}
+      propertyPath: properties.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 443575149, guid: 63747b4d87527434dace70992c78a5e5, type: 3}
       propertyPath: settingsController
       value: 
       objectReference: {fileID: 189808622842258208}
+    - target: {fileID: 443575149, guid: 63747b4d87527434dace70992c78a5e5, type: 3}
+      propertyPath: toggles.Array.data[5]
+      value: 2560
+      objectReference: {fileID: 0}
+    - target: {fileID: 443575149, guid: 63747b4d87527434dace70992c78a5e5, type: 3}
+      propertyPath: toggles.Array.data[6]
+      value: 3840
+      objectReference: {fileID: 0}
+    - target: {fileID: 443575149, guid: 63747b4d87527434dace70992c78a5e5, type: 3}
+      propertyPath: properties.Array.data[5]
+      value: 2560 x 1440
+      objectReference: {fileID: 0}
+    - target: {fileID: 443575149, guid: 63747b4d87527434dace70992c78a5e5, type: 3}
+      propertyPath: properties.Array.data[6]
+      value: 3840 x 2160
+      objectReference: {fileID: 0}
     - target: {fileID: 1731188977, guid: 63747b4d87527434dace70992c78a5e5, type: 3}
       propertyPath: settingsController
       value: 

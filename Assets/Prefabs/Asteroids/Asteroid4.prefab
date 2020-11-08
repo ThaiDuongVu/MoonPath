@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8058896503874537263}
   - component: {fileID: 5202225904532894693}
   - component: {fileID: -3092490172623303685}
+  - component: {fileID: -2828709846099603405}
   - component: {fileID: 6914029574651522915}
   m_Layer: 0
   m_Name: Asteroid4
@@ -96,6 +97,25 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.25
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &-2828709846099603405
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5995127377106768432}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cb479d61b0e9e864f8dede835a5d0c38, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &6914029574651522915
 MonoBehaviour:
   m_ObjectHideFlags: 0

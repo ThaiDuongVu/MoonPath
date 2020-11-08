@@ -40,6 +40,7 @@ public class ScoreController : MonoBehaviour
         
     }
 
+    // Add a certain amount to current score
     public void AddScore(int amount)
     {
         _score += amount;

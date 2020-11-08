@@ -69,3 +69,4 @@ MonoBehaviour:
   - {fileID: 3293056747796185186, guid: 7b776ccc1eb077c499b22603a89ae43a, type: 3}
   - {fileID: 4325301683641170528, guid: dbda31506879f06479b7f83f1a4b5ded, type: 3}
   - {fileID: 5472130469107386193, guid: 61e0df43923595647834c45388e3795e, type: 3}
+  coinPrefab: {fileID: 3982477221123610756, guid: 4f64db43f7dedcf41957ac19df5ac3bd, type: 3}
