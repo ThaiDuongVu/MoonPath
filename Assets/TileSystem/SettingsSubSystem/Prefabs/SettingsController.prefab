@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7c25547acf96cc4eb21328b95e8617b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  postProcessProfile: {fileID: 11400000, guid: 4344b353307de48449dffd3bdc72d680, type: 2}
   fullScreen: {fileID: 5886990728812311632}
   resolution: {fileID: 5886990730442993625}
   quality: {fileID: 5985458793452649940}

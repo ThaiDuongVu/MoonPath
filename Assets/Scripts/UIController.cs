@@ -4,7 +4,6 @@ using UnityEngine;
 public class UIController : MonoBehaviour
 {
     // Use a singleton pattern to make the class globally accessible
-
     #region Singleton
 
     private static UIController _instance;
@@ -24,6 +23,8 @@ public class UIController : MonoBehaviour
     [SerializeField] private TMP_Text fpsText;
     private float _timer;
 
+    [SerializeField] private TMP_Text scoreText;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -36,10 +37,12 @@ public class UIController : MonoBehaviour
         DisplayFPS();
     }
 
+    #region FPS Methods
+
     // Show game framerate
     private void DisplayFPS()
     {
-        UpdateText(fpsText, ((int) (1f / Time.unscaledDeltaTime)).ToString(), 1);
+        UpdateText(fpsText, ((int)(1f / Time.unscaledDeltaTime)).ToString(), 1f);
     }
 
     // Show fps text
@@ -52,6 +55,14 @@ public class UIController : MonoBehaviour
     public void HideFPS()
     {
         fpsText.gameObject.SetActive(false);
+    }
+
+    #endregion
+
+    // Update score text
+    public void UpdateScoreText(int score)
+    {
+        scoreText.text = score.ToString();
     }
 
     // Update a text on screen with a refresh rate to stop screen from updating every frame

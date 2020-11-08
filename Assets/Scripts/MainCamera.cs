@@ -6,7 +6,8 @@ public class MainCamera : MonoBehaviour
     public Transform followTarget;
     public Transform rotateTarget;
 
-    private const float InterpolationRatio = 0.075f;
+    private const float MovementInterpolationRatio = 0.075f;
+    private const float RotationInterpolationRatio = 0.05f;
 
     [SerializeField] private GameController gameController;
 
@@ -20,6 +21,7 @@ public class MainCamera : MonoBehaviour
     {
         _inputManager = new InputManager();
 
+        // Handle boost & brake input
         _inputManager.Player.Boost.performed += BoostOnPerformed;
         _inputManager.Player.Brake.performed += BrakeOnPerformed;
 
@@ -35,6 +37,7 @@ public class MainCamera : MonoBehaviour
     {
         if (gameController is null || Time.deltaTime == 0f) return;
 
+        BoostBrakeOnCanceled(context);
         _animator.SetBool(IsBoosting, true);
     }
 
@@ -42,6 +45,7 @@ public class MainCamera : MonoBehaviour
     {
         if (gameController is null || Time.deltaTime == 0f) return;
 
+        BoostBrakeOnCanceled(context);
         _animator.SetBool(IsBraking, true);
     }
 
@@ -80,13 +84,13 @@ public class MainCamera : MonoBehaviour
         Vector3 targetPosition = target.position;
         Vector3 lerpPosition = new Vector3(targetPosition.x, targetPosition.y + 1f, targetPosition.z);
 
-        transform.position = Vector3.Lerp(transform.position, lerpPosition, InterpolationRatio);
+        transform.position = Vector3.Lerp(transform.position, lerpPosition, MovementInterpolationRatio);
     }
 
     private void Rotate(Transform target)
     {
         if (target is null || Time.deltaTime == 0f) return;
 
-        transform.forward = Vector3.Lerp(transform.forward, target.up, InterpolationRatio);
+        transform.forward = Vector3.Lerp(transform.forward, target.up, RotationInterpolationRatio);
     }
 }

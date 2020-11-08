@@ -17,6 +17,8 @@ public class Projectile : MonoBehaviour
     [HideInInspector] public Vector2 rotationVelocity;
     private const float RotationFactor = 2f;
 
+    private Transform destination;
+
     private Animator _animator;
     private static readonly int IsBoosting = Animator.StringToHash("isBoosting");
     private static readonly int IsBraking = Animator.StringToHash("isBraking");
@@ -25,11 +27,13 @@ public class Projectile : MonoBehaviour
 
     private InputManager _inputManager;
     private Camera _camera;
+    private MainCamera _mainCamera;
 
     private void OnEnable()
     {
         _inputManager = new InputManager();
 
+        // Handle boost & brake input
         _inputManager.Player.Boost.performed += BoostOnPerformed;
         _inputManager.Player.Brake.performed += BrakeOnPerformed;
 
@@ -43,12 +47,16 @@ public class Projectile : MonoBehaviour
 
     private void BoostOnPerformed(InputAction.CallbackContext context)
     {
+        BoostBrakeOnCanceled(context);
+
         _targetVelocity = BoostVelocity;
         _animator.SetBool(IsBoosting, true);
     }
 
     private void BrakeOnPerformed(InputAction.CallbackContext context)
     {
+        BoostBrakeOnCanceled(context);
+
         _targetVelocity = BrakeVelocity;
         _animator.SetBool(IsBraking, true);
     }
@@ -56,7 +64,6 @@ public class Projectile : MonoBehaviour
     private void BoostBrakeOnCanceled(InputAction.CallbackContext context)
     {
         _targetVelocity = NormalVelocity;
-
         _animator.SetBool(IsBoosting, false);
         _animator.SetBool(IsBraking, false);
     }
@@ -72,6 +79,8 @@ public class Projectile : MonoBehaviour
     private void Awake()
     {
         _camera = Camera.main;
+        _mainCamera = _camera.GetComponent<MainCamera>();
+
         _characterController = GetComponent<CharacterController>();
         _gameController = FindObjectOfType<GameController>();
 
@@ -84,9 +93,16 @@ public class Projectile : MonoBehaviour
     private void FixedUpdate()
     {
         Fly();
-        Rotate(rotationVelocity * RotationFactor, transform);
-
         Accelerate(_targetVelocity);
+
+        if (destination)
+        {
+            transform.up = Vector3.Lerp(transform.up, (destination.transform.position - transform.position).normalized, 0.1f);   
+        }
+        else
+        {
+            Rotate(rotationVelocity * RotationFactor, transform);
+        }
     }
 
     #region Movement Methods
@@ -129,14 +145,27 @@ public class Projectile : MonoBehaviour
     {
         if (other.CompareTag("Moon"))
         {
-            _gameController.ChangeFlowState(FlowState.Aiming);
-            _gameController.RandomizeAsteroids();
-
-            Destroy(gameObject);
+            _mainCamera.followTarget = null;
+            destination = other.transform;
         }
         else if (other.CompareTag("Asteroid"))
         {
             CameraShake.Instance.ShakeNormal();
+        }
+    }
+
+    #endregion
+
+    #region Collision Methods
+
+    private void OnControllerColliderHit(ControllerColliderHit other)
+    {
+        if (other.transform.CompareTag("Moon"))
+        {
+            _gameController.ChangeFlowState(FlowState.Aiming);
+            _gameController.RandomizeAsteroids();
+
+            Destroy(gameObject);
         }
     }
 

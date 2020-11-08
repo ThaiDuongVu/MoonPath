@@ -3,6 +3,7 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class GlobalController : MonoBehaviour
 {
+    // Use a singleton pattern to make the class globally accessible
     #region Singleton
 
     private static GlobalController _instance;
@@ -55,10 +56,5 @@ public class GlobalController : MonoBehaviour
     {
         // _depthOfField.enabled.value = false;
         _depthOfField.focusDistance.value = 3.75f;
-    }
-
-    public void SetMotionBlur(int value)
-    {
-        _motionBlur.enabled.value = value == 0;
     }
 }
