@@ -22,24 +22,6 @@ public class ScoreController : MonoBehaviour
     [HideInInspector] private int _score;
     private int _highScore;
 
-    // Awake is called when object is initialized
-    private void Awake()
-    {
-        
-    }
-
-    // Start is called before the first frame update
-    private void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-        
-    }
-
     // Add a certain amount to current score
     public void AddScore(int amount)
     {

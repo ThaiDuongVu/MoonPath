@@ -215,8 +215,8 @@ MonoBehaviour:
     overrideState: 1
     value: -20
   tint:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 20
   colorFilter:
     overrideState: 0
     value: {r: 1, g: 1, b: 1, a: 1}

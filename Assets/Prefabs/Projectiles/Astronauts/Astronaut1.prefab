@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationVelocity: {x: 0, y: 0}
+  _explosion: {fileID: 3858289915639658270, guid: 85798a819b9379d419eb7a23de49fd80, type: 3}
 --- !u!1001 &2426187103554192665
 PrefabInstance:
   m_ObjectHideFlags: 0

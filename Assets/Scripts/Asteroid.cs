@@ -8,9 +8,10 @@ public class Asteroid : MonoBehaviour
     private const float RotateSpeed = 0.5f;
 
     // Update is called once per frame
-    private void Update()
+    private void FixedUpdate()
     {
         Float();
+        Rotate(RotateSpeed);
     }
 
     public void Randomize()
@@ -26,5 +27,10 @@ public class Asteroid : MonoBehaviour
         position = Vector3.Lerp(position, new Vector3(position.x + Random.Range(-FloatingRange, FloatingRange), position.y + Random.Range(-FloatingRange, FloatingRange), position.z + Random.Range(-FloatingRange, FloatingRange)), InterpolationRatio);
 
         transform.position = position;
+    }
+
+    protected void Rotate(float speed)
+    {
+        transform.Rotate(0f, speed, 0f, Space.World);
     }
 }

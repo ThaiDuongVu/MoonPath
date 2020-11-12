@@ -13,6 +13,5 @@ public class Planet : MonoBehaviour
     private void Rotate()
     {
         transform.Rotate(0f, RotateSpeed, 0f, Space.Self);
-        // transform.RotateAround(transform.position, Camera.main.transform.up, RotateSpeed);
     }
 }

@@ -2,6 +2,8 @@
 
 public class Coin : Asteroid
 {
+    private const float RotateSpeed = 5f;
+
     // Awake is called when object is initialized
     private void Awake()
     {
@@ -15,8 +17,8 @@ public class Coin : Asteroid
     }
 
     // Update is called once per frame
-    private void Update()
+    private void FixedUpdate()
     {
-
+        Rotate(RotateSpeed);
     }
 }

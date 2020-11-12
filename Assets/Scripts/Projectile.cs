@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using UnityEngine.InputSystem;
 
 public class Projectile : MonoBehaviour
@@ -24,6 +25,7 @@ public class Projectile : MonoBehaviour
     private static readonly int IsBraking = Animator.StringToHash("isBraking");
 
     private GameController _gameController;
+    [SerializeField] private ParticleSystem _explosion;
 
     private InputManager _inputManager;
     private Camera _camera;
@@ -97,7 +99,7 @@ public class Projectile : MonoBehaviour
 
         if (destination)
         {
-            transform.up = Vector3.Lerp(transform.up, (destination.transform.position - transform.position).normalized, 0.1f);   
+            transform.up = Vector3.Lerp(transform.up, (destination.transform.position - transform.position).normalized, 0.1f);
         }
         else
         {
@@ -162,8 +164,10 @@ public class Projectile : MonoBehaviour
     {
         if (other.transform.CompareTag("Moon"))
         {
-            _gameController.ChangeFlowState(FlowState.Aiming);
+            _gameController.ChangeFlowState(FlowState.Returning);
             _gameController.RandomizeAsteroids();
+
+            Instantiate(_explosion, transform.position, _explosion.transform.rotation);
 
             Destroy(gameObject);
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -24,6 +25,8 @@ public class GameController : MonoBehaviour
     private const int AsteroidLimit = 100;
 
     [SerializeField] private Coin coinPrefab;
+    private readonly List<Coin> _coins = new List<Coin>();
+    private const int CoinLimit = 20;
 
     private InputManager _inputManager;
 
@@ -135,6 +138,23 @@ public class GameController : MonoBehaviour
         GlobalController.Instance.DisableDepthOfField();
 
         SpawnAsteroids();
+        SpawnCoins();
+    }
+
+    // Update is called once per frame
+    private void Update()
+    {
+        if (flowState == FlowState.Returning)
+        {
+            StartCoroutine(ReturnDelay());
+        }
+    }
+
+    private IEnumerator ReturnDelay()
+    {
+        yield return new WaitForSeconds(0.25f);
+
+        ChangeFlowState(FlowState.Aiming);
     }
 
     // Pause game
@@ -196,6 +216,11 @@ public class GameController : MonoBehaviour
         }
     }
 
+    private void SpawnCoins()
+    {
+
+    }
+
     public void RandomizeAsteroids()
     {
         foreach (Asteroid asteroid in _asteroids)
@@ -209,16 +234,21 @@ public class GameController : MonoBehaviour
     {
         flowState = newState;
 
-        if (flowState != FlowState.Aiming)
+        if (flowState == FlowState.Flying)
         {
             turret.enabled = false;
         }
-        else
+        else if (flowState == FlowState.Aiming)
         {
             turret.enabled = true;
 
             mainCamera.followTarget = cameraPoint;
             mainCamera.rotateTarget = spawnPoint;
+        }
+        else
+        {
+            mainCamera.followTarget = null;
+            mainCamera.rotateTarget = null;
         }
     }
 }
