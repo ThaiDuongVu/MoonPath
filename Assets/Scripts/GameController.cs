@@ -85,13 +85,19 @@ public class GameController : MonoBehaviour
 
     private void AimOnPerformed(InputAction.CallbackContext context)
     {
+        Vector2 rotationVeclocity;
+        if (PlayerPrefs.GetInt("YInvert", 0) == 0)
+            rotationVeclocity = context.ReadValue<Vector2>();
+        else
+            rotationVeclocity = new Vector2(context.ReadValue<Vector2>().x, context.ReadValue<Vector2>().y * -1f);
+
         switch (flowState)
         {
             case FlowState.Aiming:
-                turret.rotationVelocity = context.ReadValue<Vector2>();
+                turret.rotationVelocity = rotationVeclocity;
                 break;
             case FlowState.Flying:
-                _currentProjectile.rotationVelocity = context.ReadValue<Vector2>();
+                _currentProjectile.rotationVelocity = rotationVeclocity;
                 break;
             case FlowState.Returning:
                 break;
@@ -247,6 +253,8 @@ public class GameController : MonoBehaviour
         }
         else
         {
+            turret.enabled = false;
+
             mainCamera.followTarget = null;
             mainCamera.rotateTarget = null;
         }

@@ -14,6 +14,8 @@ public class SettingsController : MonoBehaviour
 
     public Settings motionBlur;
 
+    public Settings yInvert;
+
     // Awake is called when an object is initialized
     private void Awake()
     {
@@ -26,11 +28,6 @@ public class SettingsController : MonoBehaviour
         Apply();
     }
 
-    public void SetMotionBlur(int value)
-    {
-        _motionBlur.enabled.value = value == 0;
-    }
-
     public void Apply()
     {
         Screen.SetResolution(resolution.currentState, resolution.currentState / 16 * 9,
@@ -39,6 +36,6 @@ public class SettingsController : MonoBehaviour
         QualitySettings.SetQualityLevel(quality.currentState);
         Application.targetFrameRate = targetFPS.currentState;
 
-        SetMotionBlur(motionBlur.currentState);
+        _motionBlur.enabled.value = motionBlur.currentState == 0;
     }
 }
