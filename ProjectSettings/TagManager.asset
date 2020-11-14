@@ -9,6 +9,7 @@ TagManager:
   - Projectile
   - Asteroid
   - Coin
+  - BadPlanet
   layers:
   - Default
   - TransparentFX

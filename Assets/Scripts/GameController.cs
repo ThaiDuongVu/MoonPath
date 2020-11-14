@@ -24,6 +24,10 @@ public class GameController : MonoBehaviour
     private readonly List<Asteroid> _asteroids = new List<Asteroid>();
     private const int AsteroidLimit = 100;
 
+    [SerializeField] private Planet badPlanetPrefab;
+    private readonly List<Planet> _planets = new List<Planet>();
+    private const int PlanetLimit = 5;
+
     [SerializeField] private Coin coinPrefab;
     private readonly List<Coin> _coins = new List<Coin>();
     private const int CoinLimit = 20;
@@ -144,6 +148,7 @@ public class GameController : MonoBehaviour
         GlobalController.Instance.DisableDepthOfField();
 
         SpawnAsteroids();
+        SpawnPlanets();
         SpawnCoins();
     }
 
@@ -222,16 +227,32 @@ public class GameController : MonoBehaviour
         }
     }
 
+    private void SpawnPlanets()
+    {
+        for (int i = 0; i < PlanetLimit; i++)
+        {
+            Vector3 spawnPosition = new Vector3(UnityEngine.Random.Range(-75f, 75f), UnityEngine.Random.Range(-25f, 100f), UnityEngine.Random.Range(50f, 200f));
+            Quaternion spawnRotation = new Quaternion(UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f));
+
+            _planets.Add(Instantiate(badPlanetPrefab, spawnPosition, spawnRotation));
+        }
+    }
+
     private void SpawnCoins()
     {
 
     }
 
-    public void RandomizeAsteroids()
+    public void Randomize()
     {
         foreach (Asteroid asteroid in _asteroids)
         {
-            asteroid.Randomize();
+            asteroid.StartRandomize(new Vector3(UnityEngine.Random.Range(-75f, 75f), UnityEngine.Random.Range(-25f, 100f), UnityEngine.Random.Range(50f, 200f)));
+        }
+
+        foreach (Planet planet in _planets)
+        {
+            planet.StartRandomize(new Vector3(UnityEngine.Random.Range(-75f, 75f), UnityEngine.Random.Range(-25f, 100f), UnityEngine.Random.Range(50f, 200f)));
         }
     }
 

@@ -53,8 +53,7 @@ public class MainCamera : MonoBehaviour
     {
         if (gameController is null || Time.deltaTime == 0f) return;
 
-        _animator.SetBool(IsBoosting, false);
-        _animator.SetBool(IsBraking, false);
+        StopBoostBrakeAnimation();
     }
 
     #endregion
@@ -75,6 +74,12 @@ public class MainCamera : MonoBehaviour
     {
         Follow(followTarget);
         Rotate(rotateTarget);
+    }
+
+    public void StopBoostBrakeAnimation()
+    {
+        _animator.SetBool(IsBoosting, false);
+        _animator.SetBool(IsBraking, false);
     }
 
     private void Follow(Transform target)

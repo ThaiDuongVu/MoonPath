@@ -145,9 +145,11 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Moon"))
+        if (other.CompareTag("Moon") || other.CompareTag("BadPlanet"))
         {
             _mainCamera.followTarget = null;
+            _mainCamera.StopBoostBrakeAnimation();
+
             destination = other.transform;
         }
         else if (other.CompareTag("Asteroid"))
@@ -162,14 +164,15 @@ public class Projectile : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit other)
     {
-        if (other.transform.CompareTag("Moon"))
+        if (other.transform.CompareTag("Moon") || other.transform.CompareTag("BadPlanet"))
         {
-            _gameController.ChangeFlowState(FlowState.Returning);
-            _gameController.RandomizeAsteroids();
-
             Instantiate(_explosion, transform.position, _explosion.transform.rotation);
 
+            _gameController.ChangeFlowState(FlowState.Returning);
+            _gameController.Randomize();
+
             Destroy(gameObject);
+            // gameObject.SetActive(false);
         }
     }
 
