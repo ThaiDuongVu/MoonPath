@@ -25,6 +25,8 @@ public class UIController : MonoBehaviour
 
     [SerializeField] private TMP_Text scoreText;
 
+    [SerializeField] private TMP_Text feedbackText;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -72,5 +74,11 @@ public class UIController : MonoBehaviour
 
         text.text = message;
         _timer = Time.unscaledTime + refreshRate;
+    }
+
+    public void Feedback(string feedback)
+    {
+        feedbackText.text = feedback;
+        feedbackText.gameObject.SetActive(true);
     }
 }

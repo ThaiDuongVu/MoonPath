@@ -141,20 +141,55 @@ public class Projectile : MonoBehaviour
         target.RotateAround(position, _camera.transform.right, -speed.y);
     }
 
+    // Disconnect projectile's motion from camera
+    private void Disconnect()
+    {
+        _mainCamera.followTarget = null;
+        _mainCamera.StopBoostBrakeAnimation();
+    }
+
+    // Projectile arrive at destination
+    private void OnArrived()
+    {
+        CameraShake.Instance.ShakeNormal();
+
+        Instantiate(_explosion, transform.position, _explosion.transform.rotation);
+
+        _gameController.ChangeFlowState(FlowState.Returning);
+        _gameController.Randomize();
+
+        Destroy(gameObject);
+    }
+
+    // When projectile fly too far away from objective
+    private IEnumerator Lost()
+    {
+        Disconnect();
+        yield return new WaitForSeconds(0.5f);
+        UIController.Instance.Feedback("Lost in the void");
+        OnArrived();
+    }
+
     #region Trigger Methods
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Moon") || other.CompareTag("BadPlanet"))
         {
-            _mainCamera.followTarget = null;
-            _mainCamera.StopBoostBrakeAnimation();
-
+            Disconnect();
             destination = other.transform;
         }
         else if (other.CompareTag("Asteroid"))
         {
             CameraShake.Instance.ShakeNormal();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Border"))
+        {
+            StartCoroutine(Lost());
         }
     }
 
@@ -164,16 +199,16 @@ public class Projectile : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit other)
     {
-        if (other.transform.CompareTag("Moon") || other.transform.CompareTag("BadPlanet"))
+        if (other.transform.CompareTag("Moon"))
         {
-            Instantiate(_explosion, transform.position, _explosion.transform.rotation);
-
-            _gameController.ChangeFlowState(FlowState.Returning);
-            _gameController.Randomize();
-
-            Destroy(gameObject);
-            // gameObject.SetActive(false);
+            UIController.Instance.Feedback("Successfully boarded");
         }
+        else if (other.transform.CompareTag("BadPlanet") || other.transform.CompareTag("Asteroid"))
+        {
+            UIController.Instance.Feedback("Fatal crash");
+        }
+
+        OnArrived();
     }
 
     #endregion

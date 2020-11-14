@@ -3,9 +3,9 @@
 public class Asteroid : MonoBehaviour
 {
     private const float InterpolationRatio = 0.01f;
-    private const float FloatingRange = 5f;
+    private const float FloatingRange = 7.5f;
 
-    private const float RotateSpeed = 0.5f;
+    private const float RotateSpeed = 2.5f;
 
     private bool isRandomizing;
     private Vector3 lerpPosition;

@@ -10,6 +10,7 @@ TagManager:
   - Asteroid
   - Coin
   - BadPlanet
+  - Border
   layers:
   - Default
   - TransparentFX

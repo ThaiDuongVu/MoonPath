@@ -30,7 +30,7 @@ public class Turret : MonoBehaviour
         // Play shoot animation
         _animator.SetTrigger(Shoot1);
         // Shake the camera
-        CameraShake.Instance.ShakeLight();
+        CameraShake.Instance.ShakeNormal();
     }
 
     // Rotate based on player's input

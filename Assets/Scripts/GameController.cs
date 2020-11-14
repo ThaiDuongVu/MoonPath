@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private Planet badPlanetPrefab;
     private readonly List<Planet> _planets = new List<Planet>();
-    private const int PlanetLimit = 5;
+    private const int PlanetLimit = 3;
 
     [SerializeField] private Coin coinPrefab;
     private readonly List<Coin> _coins = new List<Coin>();
@@ -168,6 +168,8 @@ public class GameController : MonoBehaviour
         ChangeFlowState(FlowState.Aiming);
     }
 
+    #region Pause, Resume & Game Over
+
     // Pause game
     private void Pause()
     {
@@ -216,6 +218,10 @@ public class GameController : MonoBehaviour
         // TODO: Freeze game
     }
 
+    #endregion
+
+    #region Spawn Objects
+
     private void SpawnAsteroids()
     {
         for (int i = 0; i < AsteroidLimit; i++)
@@ -231,8 +237,8 @@ public class GameController : MonoBehaviour
     {
         for (int i = 0; i < PlanetLimit; i++)
         {
-            Vector3 spawnPosition = new Vector3(UnityEngine.Random.Range(-75f, 75f), UnityEngine.Random.Range(-25f, 100f), UnityEngine.Random.Range(50f, 200f));
-            Quaternion spawnRotation = new Quaternion(UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f));
+            Vector3 spawnPosition = new Vector3(UnityEngine.Random.Range(-50f, 50f), UnityEngine.Random.Range(0f, 75f), UnityEngine.Random.Range(50f, 200f));
+            Quaternion spawnRotation = new Quaternion(0f, UnityEngine.Random.Range(0f, 1f), 0f, 0f);
 
             _planets.Add(Instantiate(badPlanetPrefab, spawnPosition, spawnRotation));
         }
@@ -243,6 +249,8 @@ public class GameController : MonoBehaviour
 
     }
 
+    #endregion
+
     public void Randomize()
     {
         foreach (Asteroid asteroid in _asteroids)
@@ -252,7 +260,7 @@ public class GameController : MonoBehaviour
 
         foreach (Planet planet in _planets)
         {
-            planet.StartRandomize(new Vector3(UnityEngine.Random.Range(-75f, 75f), UnityEngine.Random.Range(-25f, 100f), UnityEngine.Random.Range(50f, 200f)));
+            planet.StartRandomize(new Vector3(UnityEngine.Random.Range(-50f, 50f), UnityEngine.Random.Range(0f, 75f), UnityEngine.Random.Range(50f, 200f)));
         }
     }
 
