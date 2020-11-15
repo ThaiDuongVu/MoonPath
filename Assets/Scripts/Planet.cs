@@ -18,6 +18,7 @@ public class Planet : MonoBehaviour
         }
     }
 
+    // Rotate around local axis
     private void Rotate()
     {
         transform.Rotate(0f, RotateSpeed, 0f, Space.Self);
@@ -29,6 +30,7 @@ public class Planet : MonoBehaviour
         lerpPosition = lerp;
     }
 
+    // Move to a random position
     public void Randomize()
     {
         // transform.position = new Vector3(Random.Range(-75f, 75f), Random.Range(-25f, 100f), Random.Range(50f, 200f));

@@ -31,6 +31,7 @@ public class Asteroid : MonoBehaviour
         lerpPosition = lerp;
     }
 
+    // Move to a random position in range
     public void Randomize()
     {
         // transform.position = new Vector3(Random.Range(-75f, 75f), Random.Range(-25f, 100f), Random.Range(50f, 200f));
@@ -42,8 +43,10 @@ public class Asteroid : MonoBehaviour
         }
     }
 
+    // Float around randomly
     private void Float()
     {
+        // If game paused then stop floating
         if (Time.timeScale == 0f) return;
 
         Vector3 position = transform.position;
@@ -52,6 +55,7 @@ public class Asteroid : MonoBehaviour
         transform.position = position;
     }
 
+    // Rotate around local axis
     protected void Rotate(float speed)
     {
         transform.Rotate(0f, speed, 0f, Space.World);

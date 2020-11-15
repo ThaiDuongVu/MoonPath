@@ -12,7 +12,7 @@ public class Crosshair : MonoBehaviour
 
     public Color32 normalColor;
     public Color32 raycastColor;
-    
+
     private RaycastHit hit;
 
     // Awake is called when object is initialized
@@ -30,7 +30,6 @@ public class Crosshair : MonoBehaviour
 
     private void PerformRaycast()
     {
-
         // If raycast from camera is "seeing" the moon then change crosshair sprite and color
         if (Physics.Raycast(_camera.transform.position, _camera.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
         {

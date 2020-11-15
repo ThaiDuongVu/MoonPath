@@ -38,7 +38,7 @@ public class CameraShake : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    private void FixedUpdate()
     {
         Randomize();
     }
@@ -70,29 +70,29 @@ public class CameraShake : MonoBehaviour
 
     public void ShakeMicro()
     {
-        _shakeDuration = 0.2f;
-        _shakeIntensity = 0.25f;
+        _shakeDuration = 0.1f;
+        _shakeIntensity = 0.35f;
         _decreaseFactor = 2f;
     }
 
     public void ShakeLight()
     {
-        _shakeDuration = 0.3f;
-        _shakeIntensity = 0.35f;
+        _shakeDuration = 0.15f;
+        _shakeIntensity = 0.45f;
         _decreaseFactor = 2f;
     }
 
     public void ShakeNormal()
     {
-        _shakeDuration = 0.4f;
-        _shakeIntensity = 0.45f;
+        _shakeDuration = 0.25f;
+        _shakeIntensity = 0.55f;
         _decreaseFactor = 2f;
     }
 
     public void ShakeHard()
     {
-        _shakeDuration = 0.5f;
-        _shakeIntensity = 0.55f;
+        _shakeDuration = 0.4f;
+        _shakeIntensity = 0.65f;
         _decreaseFactor = 2f;
     }
 

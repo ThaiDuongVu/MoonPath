@@ -27,6 +27,8 @@ public class UIController : MonoBehaviour
 
     [SerializeField] private TMP_Text feedbackText;
 
+    [SerializeField] private Transform title;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -76,9 +78,16 @@ public class UIController : MonoBehaviour
         _timer = Time.unscaledTime + refreshRate;
     }
 
+    // Pop up a feedback text
     public void Feedback(string feedback)
     {
         feedbackText.text = feedback;
         feedbackText.gameObject.SetActive(true);
+    }
+
+    // Disable or enable main menu title
+    public void SetTitleActive(bool value)
+    {
+        title.gameObject.SetActive(value);
     }
 }

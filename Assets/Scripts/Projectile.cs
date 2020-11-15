@@ -26,6 +26,10 @@ public class Projectile : MonoBehaviour
 
     private GameController _gameController;
     [SerializeField] private ParticleSystem _explosion;
+    private bool _isCollided;
+
+    [SerializeField] private GameObject _rig;
+    [SerializeField] private GameObject _trail;
 
     private InputManager _inputManager;
     private Camera _camera;
@@ -133,10 +137,11 @@ public class Projectile : MonoBehaviour
     // Rotate based on player's input
     private void Rotate(Vector2 speed, Transform target)
     {
+        // If game paused the stop rotating
         if (Time.timeScale == 0f) return;
 
-        // target.Rotate(-speed.y, speed.x, 0f, Space.World);
         Vector3 position = transform.position;
+
         target.RotateAround(position, _camera.transform.up, speed.x);
         target.RotateAround(position, _camera.transform.right, -speed.y);
     }
@@ -149,15 +154,24 @@ public class Projectile : MonoBehaviour
     }
 
     // Projectile arrive at destination
-    private void OnArrived()
+    private IEnumerator OnArrived()
     {
+        // Shake camera
         CameraShake.Instance.ShakeNormal();
 
+        // Explode and disable character rig
         Instantiate(_explosion, transform.position, _explosion.transform.rotation);
+        _rig.SetActive(false);
+        _trail.SetActive(false);
 
+        yield return new WaitForSeconds(0.25f);
+
+        // Return to original position
         _gameController.ChangeFlowState(FlowState.Returning);
+        // Randomize asteroids and planets
         _gameController.Randomize();
 
+        // Destroy this projectile
         Destroy(gameObject);
     }
 
@@ -165,9 +179,11 @@ public class Projectile : MonoBehaviour
     private IEnumerator Lost()
     {
         Disconnect();
-        yield return new WaitForSeconds(0.5f);
+
+        yield return new WaitForSeconds(0.45f);
+
         UIController.Instance.Feedback("Lost in the void");
-        OnArrived();
+        StartCoroutine(OnArrived());
     }
 
     #region Trigger Methods
@@ -178,10 +194,6 @@ public class Projectile : MonoBehaviour
         {
             Disconnect();
             destination = other.transform;
-        }
-        else if (other.CompareTag("Asteroid"))
-        {
-            CameraShake.Instance.ShakeNormal();
         }
     }
 
@@ -199,16 +211,20 @@ public class Projectile : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit other)
     {
+        // If projectile already collided then stop
+        if (_isCollided) return;
+
         if (other.transform.CompareTag("Moon"))
         {
             UIController.Instance.Feedback("Successfully boarded");
         }
-        else if (other.transform.CompareTag("BadPlanet") || other.transform.CompareTag("Asteroid"))
+        else if (other.transform.CompareTag("BadPlanet") || other.transform.CompareTag("Asteroid") || other.transform.CompareTag("Earth"))
         {
             UIController.Instance.Feedback("Fatal crash");
         }
 
-        OnArrived();
+        _isCollided = true;
+        StartCoroutine(OnArrived());
     }
 
     #endregion

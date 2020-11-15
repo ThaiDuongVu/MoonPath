@@ -122,6 +122,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationVelocity: {x: 0, y: 0}
   _explosion: {fileID: 3858289915639658270, guid: 85798a819b9379d419eb7a23de49fd80, type: 3}
+  _rig: {fileID: 5291072148650525700}
+  _trail: {fileID: 2024699106300397481}
 --- !u!1001 &72034807323436683
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -179,6 +181,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e489132b9efd33c4ca24530ee111294b, type: 3}
+--- !u!1 &2024699106300397481 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2082569970472722722, guid: e489132b9efd33c4ca24530ee111294b, type: 3}
+  m_PrefabInstance: {fileID: 72034807323436683}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &440867183675415535 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 495867755428560228, guid: e489132b9efd33c4ca24530ee111294b, type: 3}
@@ -237,7 +244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 71693e72148998e40ab33341c2c451e1, type: 3}
       propertyPath: m_Name
-      value: model
+      value: rig
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71693e72148998e40ab33341c2c451e1, type: 3}

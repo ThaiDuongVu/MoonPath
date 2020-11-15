@@ -76,12 +76,14 @@ public class MainCamera : MonoBehaviour
         Rotate(rotateTarget);
     }
 
+    // Disable boosting or braking animation
     public void StopBoostBrakeAnimation()
     {
         _animator.SetBool(IsBoosting, false);
         _animator.SetBool(IsBraking, false);
     }
 
+    // Follow a target in space
     private void Follow(Transform target)
     {
         if (target is null || Time.deltaTime == 0f) return;
@@ -92,6 +94,7 @@ public class MainCamera : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, lerpPosition, MovementInterpolationRatio);
     }
 
+    // Rotate towards a target
     private void Rotate(Transform target)
     {
         if (target is null || Time.deltaTime == 0f) return;

@@ -226,9 +226,11 @@ public class GameController : MonoBehaviour
     {
         for (int i = 0; i < AsteroidLimit; i++)
         {
+            // Generate a random spawn position and rotation
             Vector3 spawnPosition = new Vector3(UnityEngine.Random.Range(-75f, 75f), UnityEngine.Random.Range(-25f, 100f), UnityEngine.Random.Range(50f, 200f));
             Quaternion spawnRotation = new Quaternion(UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f));
 
+            // Spawn asteroids and add them to a list
             _asteroids.Add(Instantiate(asteroidPrefabs[UnityEngine.Random.Range(0, asteroidPrefabs.Count)], spawnPosition, spawnRotation));
         }
     }
@@ -237,9 +239,11 @@ public class GameController : MonoBehaviour
     {
         for (int i = 0; i < PlanetLimit; i++)
         {
+            // Generate a random spawn position and rotation
             Vector3 spawnPosition = new Vector3(UnityEngine.Random.Range(-50f, 50f), UnityEngine.Random.Range(0f, 75f), UnityEngine.Random.Range(50f, 200f));
             Quaternion spawnRotation = new Quaternion(0f, UnityEngine.Random.Range(0f, 1f), 0f, 0f);
 
+            // Spawn planets and add them to a list
             _planets.Add(Instantiate(badPlanetPrefab, spawnPosition, spawnRotation));
         }
     }
@@ -253,11 +257,13 @@ public class GameController : MonoBehaviour
 
     public void Randomize()
     {
+        // Randomize all asteroids
         foreach (Asteroid asteroid in _asteroids)
         {
             asteroid.StartRandomize(new Vector3(UnityEngine.Random.Range(-75f, 75f), UnityEngine.Random.Range(-25f, 100f), UnityEngine.Random.Range(50f, 200f)));
         }
 
+        // Randomize all planets
         foreach (Planet planet in _planets)
         {
             planet.StartRandomize(new Vector3(UnityEngine.Random.Range(-50f, 50f), UnityEngine.Random.Range(0f, 75f), UnityEngine.Random.Range(50f, 200f)));
@@ -269,10 +275,12 @@ public class GameController : MonoBehaviour
     {
         flowState = newState;
 
+        // If new flow state is flying then disable turret
         if (flowState == FlowState.Flying)
         {
             turret.enabled = false;
         }
+        // If new flow state is aiming then enable turret and set camera follow and rotate target
         else if (flowState == FlowState.Aiming)
         {
             turret.enabled = true;
@@ -280,6 +288,7 @@ public class GameController : MonoBehaviour
             mainCamera.followTarget = cameraPoint;
             mainCamera.rotateTarget = spawnPoint;
         }
+        // If new flow state is returning then enable disable turrent and set camera follow and rotate target to null
         else
         {
             turret.enabled = false;

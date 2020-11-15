@@ -305,6 +305,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 1683202267}
+    - target: {fileID: 1306692831634478855, guid: 155f7a0f442fbf143857613532596940, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 6444385824448210905}
     - target: {fileID: 1306692832828537006, guid: 155f7a0f442fbf143857613532596940, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -922,7 +926,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1188980927823823295, guid: 16ec552ba34eae44d8c56a7901541364, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1188980927823823295, guid: 16ec552ba34eae44d8c56a7901541364, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -954,6 +958,34 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1188980927823823295, guid: 16ec552ba34eae44d8c56a7901541364, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188980927823823295, guid: 16ec552ba34eae44d8c56a7901541364, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: UIController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188980927823823295, guid: 16ec552ba34eae44d8c56a7901541364, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188980927823823295, guid: 16ec552ba34eae44d8c56a7901541364, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188980927823823295, guid: 16ec552ba34eae44d8c56a7901541364, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188980927823823295, guid: 16ec552ba34eae44d8c56a7901541364, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 6444385824448210905}
+    - target: {fileID: 1188980927823823295, guid: 16ec552ba34eae44d8c56a7901541364, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: SetTitleActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188980927823823295, guid: 16ec552ba34eae44d8c56a7901541364, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1335,8 +1367,23 @@ PrefabInstance:
       propertyPath: fpsText
       value: 
       objectReference: {fileID: 1186760492}
+    - target: {fileID: 6444385822972048687, guid: 43fcf7d89639b5c4ab1f4de54c396016, type: 3}
+      propertyPath: title
+      value: 
+      objectReference: {fileID: 2077082046}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43fcf7d89639b5c4ab1f4de54c396016, type: 3}
+--- !u!114 &6444385824448210905 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6444385822972048687, guid: 43fcf7d89639b5c4ab1f4de54c396016, type: 3}
+  m_PrefabInstance: {fileID: 6444385824448210904}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce029e8e26dcbd145aefc0db60cefa5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6714197981826042525
 PrefabInstance:
   m_ObjectHideFlags: 0
