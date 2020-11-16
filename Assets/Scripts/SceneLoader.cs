@@ -41,7 +41,7 @@ public class SceneLoader : MonoBehaviour
         asyncOperation.allowSceneActivation = false;
 
         // Delay the load for animation to play
-        yield return new WaitForSeconds(30f * Time.unscaledDeltaTime);
+        yield return new WaitForSeconds(30f * Time.fixedDeltaTime);
 
         // Animation done, activate new scene
         asyncOperation.allowSceneActivation = true;

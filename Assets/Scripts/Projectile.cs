@@ -26,6 +26,7 @@ public class Projectile : MonoBehaviour
 
     private GameController _gameController;
     [SerializeField] private ParticleSystem _explosion;
+    [SerializeField] private ParticleSystem _coinExplosion;
     private bool _isCollided;
 
     [SerializeField] private GameObject _rig;
@@ -195,6 +196,18 @@ public class Projectile : MonoBehaviour
             Disconnect();
             destination = other.transform;
         }
+        else if (other.CompareTag("Coin"))
+        {
+            if (other.GetType().Equals(typeof(SphereCollider)))
+            {
+                other.GetComponent<Coin>().attractTarget = transform;
+            }
+            else
+            {
+                Instantiate(_coinExplosion, transform.position, _coinExplosion.transform.rotation);
+                Destroy(other.gameObject);
+            }
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -217,14 +230,17 @@ public class Projectile : MonoBehaviour
         if (other.transform.CompareTag("Moon"))
         {
             UIController.Instance.Feedback("Successfully boarded");
+            _isCollided = true;
+
+            StartCoroutine(OnArrived());
         }
         else if (other.transform.CompareTag("BadPlanet") || other.transform.CompareTag("Asteroid") || other.transform.CompareTag("Earth"))
         {
             UIController.Instance.Feedback("Fatal crash");
-        }
+            _isCollided = true;
 
-        _isCollided = true;
-        StartCoroutine(OnArrived());
+            StartCoroutine(OnArrived());
+        }
     }
 
     #endregion

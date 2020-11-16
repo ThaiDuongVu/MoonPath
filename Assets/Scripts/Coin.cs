@@ -4,21 +4,19 @@ public class Coin : Asteroid
 {
     private const float RotateSpeed = 5f;
 
-    // Awake is called when object is initialized
-    private void Awake()
-    {
-
-    }
-
-    // Start is called before the first frame update
-    private void Start()
-    {
-
-    }
+    [HideInInspector] public Transform attractTarget;
+    private const float InterpolationRatio = 0.6f;
 
     // Update is called once per frame
     private void FixedUpdate()
     {
         Rotate(RotateSpeed);
+        Attract(attractTarget);
+    }
+
+    private void Attract(Transform target)
+    {
+        if (target == null) return;
+        transform.position = Vector3.Lerp(transform.position, target.position, InterpolationRatio);
     }
 }

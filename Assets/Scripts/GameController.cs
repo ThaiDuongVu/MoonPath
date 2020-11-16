@@ -24,13 +24,13 @@ public class GameController : MonoBehaviour
     private readonly List<Asteroid> _asteroids = new List<Asteroid>();
     private const int AsteroidLimit = 100;
 
-    [SerializeField] private Planet badPlanetPrefab;
+    [SerializeField] private List<Planet> badPlanetPrefabs;
     private readonly List<Planet> _planets = new List<Planet>();
     private const int PlanetLimit = 3;
 
-    [SerializeField] private Coin coinPrefab;
+    [SerializeField] private List<Coin> coinPrefabs;
     private readonly List<Coin> _coins = new List<Coin>();
-    private const int CoinLimit = 20;
+    private const int CoinLimit = 50;
 
     private InputManager _inputManager;
 
@@ -226,12 +226,15 @@ public class GameController : MonoBehaviour
     {
         for (int i = 0; i < AsteroidLimit; i++)
         {
+            // Asteroid to spawn
+            Asteroid spawnAsteroid = asteroidPrefabs[UnityEngine.Random.Range(0, asteroidPrefabs.Count)];
+
             // Generate a random spawn position and rotation
             Vector3 spawnPosition = new Vector3(UnityEngine.Random.Range(-75f, 75f), UnityEngine.Random.Range(-25f, 100f), UnityEngine.Random.Range(50f, 200f));
             Quaternion spawnRotation = new Quaternion(UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f));
 
             // Spawn asteroids and add them to a list
-            _asteroids.Add(Instantiate(asteroidPrefabs[UnityEngine.Random.Range(0, asteroidPrefabs.Count)], spawnPosition, spawnRotation));
+            _asteroids.Add(Instantiate(spawnAsteroid, spawnPosition, spawnRotation));
         }
     }
 
@@ -239,18 +242,32 @@ public class GameController : MonoBehaviour
     {
         for (int i = 0; i < PlanetLimit; i++)
         {
+            // Planet to spawn
+            Planet spawnPlanet = badPlanetPrefabs[UnityEngine.Random.Range(0, badPlanetPrefabs.Count)];
+
             // Generate a random spawn position and rotation
             Vector3 spawnPosition = new Vector3(UnityEngine.Random.Range(-50f, 50f), UnityEngine.Random.Range(0f, 75f), UnityEngine.Random.Range(50f, 200f));
             Quaternion spawnRotation = new Quaternion(0f, UnityEngine.Random.Range(0f, 1f), 0f, 0f);
 
             // Spawn planets and add them to a list
-            _planets.Add(Instantiate(badPlanetPrefab, spawnPosition, spawnRotation));
+            _planets.Add(Instantiate(spawnPlanet, spawnPosition, spawnRotation));
         }
     }
 
     private void SpawnCoins()
     {
+        for (int i = 0; i < CoinLimit; i++)
+        {
+            // Coin to spawn
+            Coin spawnCoin = coinPrefabs[UnityEngine.Random.Range(0, coinPrefabs.Count)];
 
+            // Generate a random spawn position and rotation
+            Vector3 spawnPosition = new Vector3(UnityEngine.Random.Range(-50f, 50f), UnityEngine.Random.Range(0f, 75f), UnityEngine.Random.Range(50f, 200f));
+            Quaternion spawnRotation = spawnCoin.transform.rotation;
+
+            // Spawn coins and add them to a list
+            _coins.Add(Instantiate(spawnCoin, spawnPosition, spawnRotation));
+        }
     }
 
     #endregion
