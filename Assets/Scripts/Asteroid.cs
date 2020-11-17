@@ -7,7 +7,7 @@ public class Asteroid : MonoBehaviour
 
     private const float RotateSpeed = 2.5f;
 
-    private bool isRandomizing;
+    protected bool isRandomizing;
     private Vector3 lerpPosition;
 
     // Update is called once per frame

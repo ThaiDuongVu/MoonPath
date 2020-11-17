@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1443542419}
   - component: {fileID: 7894902698008910772}
   - component: {fileID: 3972613581122333054}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Moon
   m_TagString: Moon
   m_Icon: {fileID: 0}

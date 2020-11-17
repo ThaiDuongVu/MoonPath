@@ -12,6 +12,7 @@ TagManager:
   - BadPlanet
   - Border
   - Earth
+  - MoonRaycastTarget
   layers:
   - Default
   - TransparentFX

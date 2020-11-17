@@ -53,6 +53,7 @@ public class GameController : MonoBehaviour
 
     #region Input Methods
 
+    // Pause & resume game on escape
     private void EscapeOnPerformed(InputAction.CallbackContext context)
     {
         switch (_gameState)
@@ -72,29 +73,41 @@ public class GameController : MonoBehaviour
         }
     }
 
+    // Shoot projectile
     private void ShootOnPerformed(InputAction.CallbackContext context)
     {
+        // If not aiming or paused then return
         if (flowState != FlowState.Aiming || Time.deltaTime == 0f) return;
 
+        // Shoot from turret
         turret.Shoot();
 
+        // Create a new projectile and set it to current projectile
         _currentProjectile = Instantiate(projectiles[UnityEngine.Random.Range(0, projectiles.Count - 1)], turret.spawnPoint.position, turret.spawnPoint.rotation).GetComponent<Projectile>();
 
+        // Set camera targets
         Transform currentProjectileTransform = _currentProjectile.transform;
         mainCamera.followTarget = currentProjectileTransform;
         mainCamera.rotateTarget = currentProjectileTransform;
 
+        // Change to flying state
         ChangeFlowState(FlowState.Flying);
+
+        // Reset turret rotation
+        turret.ResetRotation();
     }
 
+    // Aim with mouse, keyboard or gamepad
     private void AimOnPerformed(InputAction.CallbackContext context)
     {
+        // If y invert is enabled then flip the rotation vector
         Vector2 rotationVeclocity;
         if (PlayerPrefs.GetInt("YInvert", 0) == 0)
             rotationVeclocity = context.ReadValue<Vector2>();
         else
             rotationVeclocity = new Vector2(context.ReadValue<Vector2>().x, context.ReadValue<Vector2>().y * -1f);
 
+        // If aiming with turret or aiming with projectile
         switch (flowState)
         {
             case FlowState.Aiming:
@@ -110,8 +123,10 @@ public class GameController : MonoBehaviour
         }
     }
 
+    // Stop aiming
     private void AimOnCanceled(InputAction.CallbackContext context)
     {
+        // Set all rotation velocity to vector 0
         switch (flowState)
         {
             case FlowState.Aiming:
@@ -141,12 +156,12 @@ public class GameController : MonoBehaviour
         Application.targetFrameRate = Screen.currentResolution.refreshRate;
 
         // Start the game
-        // TODO: Play a cutscene THEN start the game
         _gameState = GameState.Started;
         Cursor.lockState = CursorLockMode.Locked;
 
         GlobalController.Instance.DisableDepthOfField();
 
+        // Spawn the planets and asteroids
         SpawnAsteroids();
         SpawnPlanets();
         SpawnCoins();
@@ -161,10 +176,10 @@ public class GameController : MonoBehaviour
         }
     }
 
+    // Delay when return
     private IEnumerator ReturnDelay()
     {
         yield return new WaitForSeconds(0.25f);
-
         ChangeFlowState(FlowState.Aiming);
     }
 
@@ -284,6 +299,12 @@ public class GameController : MonoBehaviour
         foreach (Planet planet in _planets)
         {
             planet.StartRandomize(new Vector3(UnityEngine.Random.Range(-50f, 50f), UnityEngine.Random.Range(0f, 75f), UnityEngine.Random.Range(50f, 200f)));
+        }
+
+        // Randomize all coins
+        foreach (Coin coin in _coins)
+        {
+            coin.StartRandomize(new Vector3(UnityEngine.Random.Range(-50f, 50f), UnityEngine.Random.Range(0f, 75f), UnityEngine.Random.Range(50f, 200f)));
         }
     }
 

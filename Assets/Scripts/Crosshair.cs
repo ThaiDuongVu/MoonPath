@@ -33,7 +33,7 @@ public class Crosshair : MonoBehaviour
         // If raycast from camera is "seeing" the moon then change crosshair sprite and color
         if (Physics.Raycast(_camera.transform.position, _camera.transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
         {
-            if (hit.transform.CompareTag("Moon"))
+            if (hit.transform.CompareTag("MoonRaycastTarget"))
             {
                 _image.color = raycastColor;
                 _image.sprite = _crosshairRaycast;

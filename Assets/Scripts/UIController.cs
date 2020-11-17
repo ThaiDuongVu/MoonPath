@@ -23,8 +23,6 @@ public class UIController : MonoBehaviour
     [SerializeField] private TMP_Text fpsText;
     private float _timer;
 
-    [SerializeField] private TMP_Text scoreText;
-
     [SerializeField] private TMP_Text feedbackText;
 
     [SerializeField] private Transform title;
@@ -62,12 +60,6 @@ public class UIController : MonoBehaviour
     }
 
     #endregion
-
-    // Update score text
-    public void UpdateScoreText(int score)
-    {
-        scoreText.text = score.ToString();
-    }
 
     // Update a text on screen with a refresh rate to stop screen from updating every frame
     private void UpdateText(TMP_Text text, string message, float refreshRate)

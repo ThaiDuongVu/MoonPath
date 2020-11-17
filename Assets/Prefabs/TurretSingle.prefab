@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 4998818900330764153}
   - component: {fileID: 4683188263563750755}
   m_Layer: 0
-  m_Name: turretHead
+  m_Name: head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
