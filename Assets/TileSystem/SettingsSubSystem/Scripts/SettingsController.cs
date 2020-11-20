@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using System.Collections.Generic;
+using TMPro;
 
 public class SettingsController : MonoBehaviour
 {
@@ -15,6 +17,9 @@ public class SettingsController : MonoBehaviour
     public Settings motionBlur;
 
     public Settings yInvert;
+    
+    public Settings font;
+    public TMP_FontAsset[] fonts;
 
     // Awake is called when an object is initialized
     private void Awake()
@@ -37,5 +42,10 @@ public class SettingsController : MonoBehaviour
         Application.targetFrameRate = targetFPS.currentState;
 
         _motionBlur.enabled.value = motionBlur.currentState == 0;
+
+        foreach (TMP_Text text in Resources.FindObjectsOfTypeAll(typeof(TMP_Text)))
+        {
+            text.font = fonts[font.currentState];
+        }
     }
 }

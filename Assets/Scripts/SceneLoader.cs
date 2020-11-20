@@ -21,6 +21,7 @@ public class SceneLoader : MonoBehaviour
     public void Load(string scene)
     {
         StartCoroutine(LoadDelay(scene));
+        // SceneManager.LoadScene(scene, LoadSceneMode.Single);
     }
 
     // Load a scene with delay for transition animation to play

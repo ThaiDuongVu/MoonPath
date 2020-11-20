@@ -310,7 +310,7 @@ MonoBehaviour:
   toggles: 8007000040060000560500000005000000040000
   currentState: 0
   settingsController: {fileID: 0}
-  propertyName: Resolution
+  propertyName: Font
   propertyText: {fileID: 1427677010}
   properties:
   - 1920 x 1080

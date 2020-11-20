@@ -24,6 +24,9 @@ public class UIController : MonoBehaviour
     private float _timer;
 
     [SerializeField] private TMP_Text coinText;
+    [SerializeField] private TMP_Text boardText;
+
+    [SerializeField] private TMP_Text countdownText;
 
     [SerializeField] private TMP_Text feedbackText;
 
@@ -76,6 +79,18 @@ public class UIController : MonoBehaviour
     public void UpdateCoinText(int coin)
     {
         coinText.text = coin.ToString();
+    }
+
+    // Update board text
+    public void UpdateBoardText(int board)
+    {
+        boardText.text = board.ToString();
+    }
+
+    // Update countdown text
+    public void UpdateCountdownText(float timer)
+    {
+        countdownText.text = ((int) timer).ToString();
     }
 
     // Pop up a feedback text

@@ -33,7 +33,11 @@ public class GameController : MonoBehaviour
     private const int CoinLimit = 50;
 
     // Number of people successfully boarded
-    private int _peopleBoarded;
+    protected int peopleBoarded;
+    // Number of people on board to take off
+    protected const int BoardThreshold = 10;
+    [SerializeField] private Animator rocket;
+
     // Number of coins earned
     private int _earnedCoin;
 
@@ -183,7 +187,7 @@ public class GameController : MonoBehaviour
         // Enable depth of field effects
         GlobalController.Instance.EnableDepthOfField();
 
-        // Enable the pause menu
+        // Enable pause menu
         menus[0].Enable();
 
         // Freeze game
@@ -211,15 +215,19 @@ public class GameController : MonoBehaviour
     }
 
     // Game over
-    private void GameOver()
+    protected void GameOver()
     {
         _gameState = GameState.GameOver;
+        Cursor.lockState = CursorLockMode.None;
 
         // Enable depth of field effects
         GlobalController.Instance.EnableDepthOfField();
 
-        // TODO: Enable game over menu
-        // TODO: Freeze game
+        // Enable game over menu
+        menus[1].Enable();
+
+        // Freeze game
+        Time.timeScale = 0f;
     }
 
     #endregion
@@ -342,6 +350,12 @@ public class GameController : MonoBehaviour
     // Board a number of people
     public void Board(int people)
     {
+        peopleBoarded += people;
+        UIController.Instance.UpdateBoardText(peopleBoarded);
+    }
 
+    protected void RocketTakeOff()
+    {
+        rocket.SetTrigger("takeOff");
     }
 }
