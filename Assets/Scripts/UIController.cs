@@ -23,6 +23,8 @@ public class UIController : MonoBehaviour
     [SerializeField] private TMP_Text fpsText;
     private float _timer;
 
+    [SerializeField] private TMP_Text coinText;
+
     [SerializeField] private TMP_Text feedbackText;
 
     [SerializeField] private Transform title;
@@ -68,6 +70,12 @@ public class UIController : MonoBehaviour
 
         text.text = message;
         _timer = Time.unscaledTime + refreshRate;
+    }
+
+    // Update coin text
+    public void UpdateCoinText(int coin)
+    {
+        coinText.text = coin.ToString();
     }
 
     // Pop up a feedback text

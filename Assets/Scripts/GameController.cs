@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour
     public Transform cameraPoint;
     public Transform spawnPoint;
 
-    [SerializeField] private List<Projectile> projectiles = new List<Projectile>();
+    [SerializeField] private List<Projectile> projectilePrefabs = new List<Projectile>();
     private Projectile _currentProjectile;
 
     [SerializeField] private List<Asteroid> asteroidPrefabs = new List<Asteroid>();
@@ -31,6 +31,11 @@ public class GameController : MonoBehaviour
     [SerializeField] private List<Coin> coinPrefabs;
     private readonly List<Coin> _coins = new List<Coin>();
     private const int CoinLimit = 50;
+
+    // Number of people successfully boarded
+    private int _peopleBoarded;
+    // Number of coins earned
+    private int _earnedCoin;
 
     private InputManager _inputManager;
 
@@ -83,7 +88,7 @@ public class GameController : MonoBehaviour
         turret.Shoot();
 
         // Create a new projectile and set it to current projectile
-        _currentProjectile = Instantiate(projectiles[UnityEngine.Random.Range(0, projectiles.Count - 1)], turret.spawnPoint.position, turret.spawnPoint.rotation).GetComponent<Projectile>();
+        _currentProjectile = Instantiate(projectilePrefabs[UnityEngine.Random.Range(0, projectilePrefabs.Count - 1)], turret.spawnPoint.position, turret.spawnPoint.rotation).GetComponent<Projectile>();
 
         // Set camera targets
         Transform currentProjectileTransform = _currentProjectile.transform;
@@ -165,22 +170,6 @@ public class GameController : MonoBehaviour
         SpawnAsteroids();
         SpawnPlanets();
         SpawnCoins();
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-        if (flowState == FlowState.Returning)
-        {
-            StartCoroutine(ReturnDelay());
-        }
-    }
-
-    // Delay when return
-    private IEnumerator ReturnDelay()
-    {
-        yield return new WaitForSeconds(0.25f);
-        ChangeFlowState(FlowState.Aiming);
     }
 
     #region Pause, Resume & Game Over
@@ -334,5 +323,25 @@ public class GameController : MonoBehaviour
             mainCamera.followTarget = null;
             mainCamera.rotateTarget = null;
         }
+    }
+
+    // Delay when return
+    protected IEnumerator ReturnDelay()
+    {
+        yield return new WaitForSeconds(0.25f);
+        ChangeFlowState(FlowState.Aiming);
+    }
+
+    // Earn an amount of coin
+    public void Earn(int coin)
+    {
+        _earnedCoin += coin;
+        UIController.Instance.UpdateCoinText(_earnedCoin);
+    }
+
+    // Board a number of people
+    public void Board(int people)
+    {
+
     }
 }

@@ -204,6 +204,8 @@ public class Projectile : MonoBehaviour
             }
             else
             {
+                _gameController.Earn(1);
+
                 Instantiate(_coinExplosion, transform.position, _coinExplosion.transform.rotation);
                 Destroy(other.gameObject);
             }
@@ -231,6 +233,8 @@ public class Projectile : MonoBehaviour
         {
             UIController.Instance.Feedback("Successfully boarded");
             _isCollided = true;
+
+            _gameController.Board(1);
 
             StartCoroutine(OnArrived());
         }

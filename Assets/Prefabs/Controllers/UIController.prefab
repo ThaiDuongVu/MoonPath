@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fpsText: {fileID: 0}
-  scoreText: {fileID: 0}
+  coinText: {fileID: 0}
   feedbackText: {fileID: 0}
   title: {fileID: 0}

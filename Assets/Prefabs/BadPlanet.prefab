@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 919132147846053256}
   - component: {fileID: 919132147846053257}
   - component: {fileID: 1521158112}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BadPlanet
   m_TagString: BadPlanet
   m_Icon: {fileID: 0}
