@@ -410,6 +410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputField: {fileID: 3473414311366505496}
+  gameController: {fileID: 0}
 --- !u!1 &3473414312090584065
 GameObject:
   m_ObjectHideFlags: 0

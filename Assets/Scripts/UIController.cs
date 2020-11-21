@@ -27,6 +27,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private TMP_Text boardText;
 
     [SerializeField] private TMP_Text countdownText;
+    [SerializeField] private TMP_Text summaryText;
 
     [SerializeField] private TMP_Text feedbackText;
 
@@ -91,6 +92,14 @@ public class UIController : MonoBehaviour
     public void UpdateCountdownText(float timer)
     {
         countdownText.text = ((int) timer).ToString();
+    }
+
+    // Update summary text
+    public void UpdateSummaryText(int peopleBoarded, int takeOffs, int coinsEarned)
+    {
+        summaryText.text = "People boarded - " + peopleBoarded + "\n";
+        summaryText.text += "Take offs - " + takeOffs + "\n";
+        summaryText.text += "Coins earned - " + coinsEarned + "\n";
     }
 
     // Pop up a feedback text

@@ -35,7 +35,9 @@ public class GameController : MonoBehaviour
     // Number of people successfully boarded
     protected int peopleBoarded;
     // Number of people on board to take off
-    protected const int BoardThreshold = 10;
+    protected const int BoardThreshold = 5;
+    // Number of rocket take offs performed
+    private int _takeOffs;
     [SerializeField] private Animator rocket;
 
     // Number of coins earned
@@ -215,7 +217,7 @@ public class GameController : MonoBehaviour
     }
 
     // Game over
-    protected void GameOver()
+    public void GameOver()
     {
         _gameState = GameState.GameOver;
         Cursor.lockState = CursorLockMode.None;
@@ -225,6 +227,7 @@ public class GameController : MonoBehaviour
 
         // Enable game over menu
         menus[1].Enable();
+        UIController.Instance.UpdateSummaryText(peopleBoarded, _takeOffs, _earnedCoin);
 
         // Freeze game
         Time.timeScale = 0f;
@@ -282,8 +285,6 @@ public class GameController : MonoBehaviour
         }
     }
 
-    #endregion
-
     public void Randomize()
     {
         // Randomize all asteroids
@@ -304,6 +305,8 @@ public class GameController : MonoBehaviour
             coin.StartRandomize(new Vector3(UnityEngine.Random.Range(-50f, 50f), UnityEngine.Random.Range(0f, 75f), UnityEngine.Random.Range(50f, 200f)));
         }
     }
+
+    #endregion
 
     // Change the game's flow state to a new state
     public void ChangeFlowState(FlowState newState)
@@ -340,6 +343,8 @@ public class GameController : MonoBehaviour
         ChangeFlowState(FlowState.Aiming);
     }
 
+    #region Game Events
+
     // Earn an amount of coin
     public void Earn(int coin)
     {
@@ -354,8 +359,12 @@ public class GameController : MonoBehaviour
         UIController.Instance.UpdateBoardText(peopleBoarded);
     }
 
+    // Rocket take off
     protected void RocketTakeOff()
     {
         rocket.SetTrigger("takeOff");
+        _takeOffs++;
     }
+
+    #endregion
 }

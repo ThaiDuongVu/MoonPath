@@ -2,7 +2,7 @@
 
 public class CountdownMode : GameController
 {
-    private float timer = 60f + 1f;
+    private float timer = 120f + 1f;
     private bool _doCountdown = true;
 
     // Update is called once per frame

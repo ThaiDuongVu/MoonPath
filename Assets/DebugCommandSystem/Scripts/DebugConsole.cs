@@ -15,6 +15,9 @@ public class DebugConsole : MonoBehaviour
     private static DebugCommand _showFPS;
     private static DebugCommand _hideFPS;
 
+    [SerializeField] private GameController gameController;
+    private static DebugCommand _gameOver;
+
     private InputManager _inputManager;
 
     private void OnEnable()
@@ -75,11 +78,15 @@ public class DebugConsole : MonoBehaviour
         _hideFPS = new DebugCommand("hide_fps", "Hide game fps", "hide_fps",
             () => { UIController.Instance.HideFPS(); });
 
+        _gameOver = new DebugCommand("game_over", "Activate game over", "game_over",
+            () => { gameController.GameOver(); });
+
         // Add all commands to list
         debugCommands = new List<object>
         {
             _showFPS,
-            _hideFPS
+            _hideFPS,
+            _gameOver
         };
     }
 
