@@ -42,6 +42,8 @@ public class GameController : MonoBehaviour
 
     // Number of coins earned
     private int _earnedCoin;
+    // Number of fatalities
+    private int _fatalities;
 
     private InputManager _inputManager;
 
@@ -227,7 +229,7 @@ public class GameController : MonoBehaviour
 
         // Enable game over menu
         menus[1].Enable();
-        UIController.Instance.UpdateSummaryText(peopleBoarded, _takeOffs, _earnedCoin);
+        UIController.Instance.UpdateSummaryText(peopleBoarded, _takeOffs, _earnedCoin, _fatalities);
 
         // Freeze game
         Time.timeScale = 0f;
@@ -343,6 +345,11 @@ public class GameController : MonoBehaviour
         ChangeFlowState(FlowState.Aiming);
     }
 
+    public virtual void CalculateRank()
+    {
+        
+    }
+
     #region Game Events
 
     // Earn an amount of coin
@@ -364,6 +371,12 @@ public class GameController : MonoBehaviour
     {
         rocket.SetTrigger("takeOff");
         _takeOffs++;
+    }
+
+    // Crash
+    public void Crash(int fatalities)
+    {
+        _fatalities += fatalities;
     }
 
     #endregion

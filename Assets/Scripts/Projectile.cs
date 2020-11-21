@@ -208,6 +208,8 @@ public class Projectile : MonoBehaviour
 
                 Instantiate(_coinExplosion, transform.position, _coinExplosion.transform.rotation);
                 Destroy(other.gameObject);
+
+                UIController.Instance.Feedback("Nice!");
             }
         }
     }
@@ -242,6 +244,8 @@ public class Projectile : MonoBehaviour
         {
             UIController.Instance.Feedback("Fatal crash");
             _isCollided = true;
+
+            _gameController.Crash(1);
 
             StartCoroutine(OnArrived());
         }

@@ -1271,7 +1271,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1458699539994756185, guid: 155f7a0f442fbf143857613532596940, type: 3}
       propertyPath: m_text
-      value: Game Mode
+      value: Game Modes
       objectReference: {fileID: 0}
     - target: {fileID: 2257703936616910963, guid: 155f7a0f442fbf143857613532596940, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1323,7 +1323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7385286329790971392, guid: 155f7a0f442fbf143857613532596940, type: 3}
       propertyPath: m_Name
-      value: GameModeMenu
+      value: GameModesMenu
       objectReference: {fileID: 0}
     - target: {fileID: 7385286329790971407, guid: 155f7a0f442fbf143857613532596940, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1549,8 +1549,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 16
@@ -1560,7 +1560,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
-  m_wordSpacing: 0
+  m_wordSpacing: 20
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
@@ -1643,8 +1643,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 16
@@ -1654,7 +1654,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
-  m_wordSpacing: 0
+  m_wordSpacing: 20
   m_lineSpacing: 0
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0

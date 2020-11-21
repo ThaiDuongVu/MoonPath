@@ -95,11 +95,14 @@ public class UIController : MonoBehaviour
     }
 
     // Update summary text
-    public void UpdateSummaryText(int peopleBoarded, int takeOffs, int coinsEarned)
+    public void UpdateSummaryText(int peopleBoarded, int takeOffs, int coinsEarned, int fatalities)
     {
+        feedbackText.gameObject.SetActive(false);
+        
         summaryText.text = "People boarded - " + peopleBoarded + "\n";
         summaryText.text += "Take offs - " + takeOffs + "\n";
         summaryText.text += "Coins earned - " + coinsEarned + "\n";
+        summaryText.text += "Fatalities - " + fatalities + "\n";
     }
 
     // Pop up a feedback text
