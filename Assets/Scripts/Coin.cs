@@ -5,7 +5,7 @@ public class Coin : Asteroid
     private const float RotateSpeed = 5f;
 
     [HideInInspector] public Transform attractTarget;
-    private const float InterpolationRatio = 0.5f;
+    private const float InterpolationRatio = 0.6f;
 
     // Update is called once per frame
     private void FixedUpdate()

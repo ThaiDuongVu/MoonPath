@@ -34,14 +34,15 @@ public class GameController : MonoBehaviour
 
     // Number of people successfully boarded
     protected int peopleBoarded;
+    protected int totalPeopleBoarded;
     // Number of people on board to take off
-    protected const int BoardThreshold = 5;
+    protected const int BoardThreshold = 3;
     // Number of rocket take offs performed
     private int _takeOffs;
     [SerializeField] private Animator rocket;
 
     // Number of coins earned
-    private int _earnedCoin;
+    protected int earnedCoin;
     // Number of fatalities
     private int _fatalities;
 
@@ -178,6 +179,8 @@ public class GameController : MonoBehaviour
         SpawnAsteroids();
         SpawnPlanets();
         SpawnCoins();
+
+        Randomize();
     }
 
     #region Pause, Resume & Game Over
@@ -229,7 +232,7 @@ public class GameController : MonoBehaviour
 
         // Enable game over menu
         menus[1].Enable();
-        UIController.Instance.UpdateSummaryText(peopleBoarded, _takeOffs, _earnedCoin, _fatalities);
+        UIController.Instance.UpdateSummaryText(totalPeopleBoarded, _takeOffs, earnedCoin, _fatalities);
 
         // Freeze game
         Time.timeScale = 0f;
@@ -246,12 +249,11 @@ public class GameController : MonoBehaviour
             // Asteroid to spawn
             Asteroid spawnAsteroid = asteroidPrefabs[UnityEngine.Random.Range(0, asteroidPrefabs.Count)];
 
-            // Generate a random spawn position and rotation
-            Vector3 spawnPosition = new Vector3(UnityEngine.Random.Range(-75f, 75f), UnityEngine.Random.Range(-25f, 100f), UnityEngine.Random.Range(50f, 200f));
+            // Generate a random spawn rotation
             Quaternion spawnRotation = new Quaternion(UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f), UnityEngine.Random.Range(0f, 1f));
 
             // Spawn asteroids and add them to a list
-            _asteroids.Add(Instantiate(spawnAsteroid, spawnPosition, spawnRotation));
+            _asteroids.Add(Instantiate(spawnAsteroid, Vector3.zero, spawnRotation));
         }
     }
 
@@ -262,12 +264,11 @@ public class GameController : MonoBehaviour
             // Planet to spawn
             Planet spawnPlanet = badPlanetPrefabs[UnityEngine.Random.Range(0, badPlanetPrefabs.Count)];
 
-            // Generate a random spawn position and rotation
-            Vector3 spawnPosition = new Vector3(UnityEngine.Random.Range(-50f, 50f), UnityEngine.Random.Range(0f, 75f), UnityEngine.Random.Range(50f, 200f));
+            // Generate a random spawn rotation
             Quaternion spawnRotation = new Quaternion(0f, UnityEngine.Random.Range(0f, 1f), 0f, 0f);
 
             // Spawn planets and add them to a list
-            _planets.Add(Instantiate(spawnPlanet, spawnPosition, spawnRotation));
+            _planets.Add(Instantiate(spawnPlanet, Vector3.zero, spawnRotation));
         }
     }
 
@@ -278,12 +279,11 @@ public class GameController : MonoBehaviour
             // Coin to spawn
             Coin spawnCoin = coinPrefabs[UnityEngine.Random.Range(0, coinPrefabs.Count)];
 
-            // Generate a random spawn position and rotation
-            Vector3 spawnPosition = new Vector3(UnityEngine.Random.Range(-50f, 50f), UnityEngine.Random.Range(0f, 75f), UnityEngine.Random.Range(50f, 200f));
+            // Generate a random spawn rotation
             Quaternion spawnRotation = spawnCoin.transform.rotation;
 
             // Spawn coins and add them to a list
-            _coins.Add(Instantiate(spawnCoin, spawnPosition, spawnRotation));
+            _coins.Add(Instantiate(spawnCoin, Vector3.zero, spawnRotation));
         }
     }
 
@@ -345,9 +345,9 @@ public class GameController : MonoBehaviour
         ChangeFlowState(FlowState.Aiming);
     }
 
+    // Calculate post game ranking by people boarded, take offs and coins earned
     public virtual void CalculateRank()
     {
-        
     }
 
     #region Game Events
@@ -355,8 +355,8 @@ public class GameController : MonoBehaviour
     // Earn an amount of coin
     public void Earn(int coin)
     {
-        _earnedCoin += coin;
-        UIController.Instance.UpdateCoinText(_earnedCoin);
+        earnedCoin += coin;
+        UIController.Instance.UpdateCoinText(earnedCoin);
     }
 
     // Board a number of people
@@ -364,6 +364,8 @@ public class GameController : MonoBehaviour
     {
         peopleBoarded += people;
         UIController.Instance.UpdateBoardText(peopleBoarded);
+
+        totalPeopleBoarded += people;
     }
 
     // Rocket take off
@@ -371,6 +373,8 @@ public class GameController : MonoBehaviour
     {
         rocket.SetTrigger("takeOff");
         _takeOffs++;
+
+        peopleBoarded = 0;
     }
 
     // Crash

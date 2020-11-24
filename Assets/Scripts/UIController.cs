@@ -31,12 +31,15 @@ public class UIController : MonoBehaviour
 
     [SerializeField] private TMP_Text feedbackText;
 
+    [SerializeField] private GameObject stars;
+
     [SerializeField] private Transform title;
 
     // Start is called before the first frame update
     private void Start()
     {
         HideFPS();
+        if (stars != null) stars.SetActive(false);
     }
 
     // Update is called once per frame
@@ -67,6 +70,8 @@ public class UIController : MonoBehaviour
 
     #endregion
 
+    #region Update Texts
+
     // Update a text on screen with a refresh rate to stop screen from updating every frame
     private void UpdateText(TMP_Text text, string message, float refreshRate)
     {
@@ -91,14 +96,14 @@ public class UIController : MonoBehaviour
     // Update countdown text
     public void UpdateCountdownText(float timer)
     {
-        countdownText.text = ((int) timer).ToString();
+        countdownText.text = ((int)timer).ToString();
     }
 
     // Update summary text
     public void UpdateSummaryText(int peopleBoarded, int takeOffs, int coinsEarned, int fatalities)
     {
         feedbackText.gameObject.SetActive(false);
-        
+
         summaryText.text = "People boarded - " + peopleBoarded + "\n";
         summaryText.text += "Take offs - " + takeOffs + "\n";
         summaryText.text += "Coins earned - " + coinsEarned + "\n";
@@ -110,6 +115,24 @@ public class UIController : MonoBehaviour
     {
         feedbackText.text = feedback;
         feedbackText.gameObject.SetActive(true);
+    }
+
+    #endregion
+
+    // Set stars active by rank
+    public void UpdateRank(int rank)
+    {
+        stars.SetActive(true);
+
+        int i = 0;
+        foreach (Transform child in stars.transform)
+        {
+            i++;
+            if (i > rank)
+            {
+                child.gameObject.SetActive(false);
+            }
+        }
     }
 
     // Disable or enable main menu title

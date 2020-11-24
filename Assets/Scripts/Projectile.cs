@@ -204,6 +204,7 @@ public class Projectile : MonoBehaviour
             }
             else
             {
+                CameraShake.Instance.ShakeLight();
                 _gameController.Earn(1);
 
                 Instantiate(_coinExplosion, transform.position, _coinExplosion.transform.rotation);
@@ -233,22 +234,21 @@ public class Projectile : MonoBehaviour
 
         if (other.transform.CompareTag("Moon"))
         {
+            CameraShake.Instance.ShakeHard();
             UIController.Instance.Feedback("Successfully boarded");
-            _isCollided = true;
 
             _gameController.Board(1);
-
-            StartCoroutine(OnArrived());
         }
         else if (other.transform.CompareTag("BadPlanet") || other.transform.CompareTag("Asteroid") || other.transform.CompareTag("Earth"))
         {
+            CameraShake.Instance.ShakeHard();
             UIController.Instance.Feedback("Fatal crash");
-            _isCollided = true;
 
             _gameController.Crash(1);
 
-            StartCoroutine(OnArrived());
         }
+        _isCollided = true;
+        StartCoroutine(OnArrived());
     }
 
     #endregion
