@@ -317,10 +317,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainMenu
       objectReference: {fileID: 0}
-    - target: {fileID: 7385286329790971392, guid: 155f7a0f442fbf143857613532596940, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7385286329790971407, guid: 155f7a0f442fbf143857613532596940, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -417,6 +413,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
       objectReference: {fileID: 6444385824448210905}
+    - target: {fileID: 8855896104245152599, guid: 155f7a0f442fbf143857613532596940, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1159218411}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 155f7a0f442fbf143857613532596940, type: 3}
 --- !u!224 &191212712 stripped

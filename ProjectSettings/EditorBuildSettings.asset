@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RushMode.unity
     guid: 76c7fb97eee53ec469cbc6de4bf1fc77
+  - enabled: 1
+    path: Assets/Scenes/Customize.unity
+    guid: 307fd5d377a7c134dbea157a3e1483a4
   m_configObjects: {}

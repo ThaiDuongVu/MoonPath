@@ -97,7 +97,7 @@ public class GameController : MonoBehaviour
         turret.Shoot();
 
         // Create a new projectile and set it to current projectile
-        _currentProjectile = Instantiate(projectilePrefabs[UnityEngine.Random.Range(0, projectilePrefabs.Count - 1)], turret.spawnPoint.position, turret.spawnPoint.rotation).GetComponent<Projectile>();
+        _currentProjectile = Instantiate(projectilePrefabs[PlayerPrefs.GetInt("Projectile", 0)], turret.spawnPoint.position, turret.spawnPoint.rotation).GetComponent<Projectile>();
 
         // Set camera targets
         Transform currentProjectileTransform = _currentProjectile.transform;
@@ -353,10 +353,12 @@ public class GameController : MonoBehaviour
     #region Game Events
 
     // Earn an amount of coin
-    public void Earn(int coin)
+    public void EarnCoin(int coin)
     {
         earnedCoin += coin;
         UIController.Instance.UpdateCoinText(earnedCoin);
+
+        PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin", 0) + 1);
     }
 
     // Board a number of people

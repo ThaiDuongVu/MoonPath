@@ -205,7 +205,7 @@ public class Projectile : MonoBehaviour
             else
             {
                 CameraShake.Instance.ShakeLight();
-                _gameController.Earn(1);
+                _gameController.EarnCoin(1);
 
                 Instantiate(_coinExplosion, transform.position, _coinExplosion.transform.rotation);
                 Destroy(other.gameObject);
