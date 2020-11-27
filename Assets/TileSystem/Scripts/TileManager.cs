@@ -40,9 +40,9 @@ public class TileManager : MonoBehaviour
         //     Select(_currentSelectedTile.leftTile);
         // }
 
-        if (directionValue.y > 0.5f) // Up
+        if (directionValue.y > 0.5f && CurrentSelectedTile.upTile != null) // Up
             Select(CurrentSelectedTile.upTile);
-        else if (directionValue.y < -0.5f) // Down
+        else if (directionValue.y < -0.5f && CurrentSelectedTile.downTile != null) // Down
             Select(CurrentSelectedTile.downTile);
     }
 

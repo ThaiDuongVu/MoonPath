@@ -4,6 +4,10 @@ using UnityEngine.InputSystem;
 
 public class Projectile : MonoBehaviour
 {
+    // How many people can this projectile carry at the same time
+    public int peopleContained;
+    public new string name;
+
     private CharacterController _characterController;
 
     private const float NormalVelocity = 30f;
@@ -234,17 +238,21 @@ public class Projectile : MonoBehaviour
 
         if (other.transform.CompareTag("Moon"))
         {
+            // Shake camera and display feedback text
             CameraShake.Instance.ShakeHard();
             UIController.Instance.Feedback("Successfully boarded");
 
-            _gameController.Board(1);
+            // Board people
+            _gameController.Board(peopleContained);
         }
         else if (other.transform.CompareTag("BadPlanet") || other.transform.CompareTag("Asteroid") || other.transform.CompareTag("Earth"))
         {
+            // Shake camera and display feedback text
             CameraShake.Instance.ShakeHard();
             UIController.Instance.Feedback("Fatal crash");
 
-            _gameController.Crash(1);
+            // Crash
+            _gameController.Crash(peopleContained);
 
         }
         _isCollided = true;

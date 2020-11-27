@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2409372547456434192}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.89, y: -0.4399457, z: 5.5912004}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2802777100757316399}
@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23ae095f81f27974a996960740bcb90b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  peopleContained: 0
   rotationVelocity: {x: 0, y: 0}
   _explosion: {fileID: 3858289915639658270, guid: 85798a819b9379d419eb7a23de49fd80, type: 3}
   _coinExplosion: {fileID: 3858289915639658270, guid: 2568044af5631b4448f9b72cb272261f, type: 3}
