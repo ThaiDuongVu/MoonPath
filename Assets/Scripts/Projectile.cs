@@ -8,6 +8,11 @@ public class Projectile : MonoBehaviour
     public int peopleContained;
     public new string name;
 
+    public int index;
+    public int requiredCoin;
+    [HideInInspector] public bool unlocked;
+    [HideInInspector] public bool selected;
+
     private CharacterController _characterController;
 
     private const float NormalVelocity = 30f;
@@ -98,6 +103,11 @@ public class Projectile : MonoBehaviour
         _animator = GetComponent<Animator>();
 
         _targetVelocity = NormalVelocity;
+
+        if (index <= PlayerPrefs.GetInt("Projectile", 0))
+        {
+            unlocked = true;
+        }
     }
 
     // Update is called once per frame

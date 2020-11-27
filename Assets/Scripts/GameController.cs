@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private List<Coin> coinPrefabs;
     private readonly List<Coin> _coins = new List<Coin>();
-    private const int CoinLimit = 50;
+    private const int CoinLimit = 100;
 
     // Number of people successfully boarded
     protected int peopleBoarded;
