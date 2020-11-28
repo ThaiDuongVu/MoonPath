@@ -104,7 +104,7 @@ public class Projectile : MonoBehaviour
 
         _targetVelocity = NormalVelocity;
 
-        if (index <= PlayerPrefs.GetInt("Projectile", 0))
+        if (index <= PlayerPrefs.GetInt("UnlockedProjectile", 0))
         {
             unlocked = true;
         }

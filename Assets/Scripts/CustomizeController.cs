@@ -48,7 +48,7 @@ public class CustomizeController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        currentSelected = PlayerPrefs.GetInt("Projectile", 0);
+        currentSelected = PlayerPrefs.GetInt("SelectedProjectile", 0);
         Select(projectiles[currentSelected]);
 
         UIController.Instance.UpdateCoinText(PlayerPrefs.GetInt("Coin", 0));
@@ -93,6 +93,7 @@ public class CustomizeController : MonoBehaviour
         {
             selected.selected = true;
             unlockText.text = "Unlocked";
+            PlayerPrefs.SetInt("SelectedProjectile", currentSelected);
         }
         else
         {
@@ -106,13 +107,17 @@ public class CustomizeController : MonoBehaviour
     // Unlock projectile to become playable
     public void Unlock()
     {
-        if (!(PlayerPrefs.GetInt("Coin", 0) > projectiles[currentSelected].requiredCoin)) return;
+        if (!(PlayerPrefs.GetInt("Coin", 0) >= projectiles[currentSelected].requiredCoin)) return;
 
         projectiles[currentSelected].unlocked = true;
         projectiles[currentSelected].selected = true;
 
         PlayerPrefs.SetInt("Coin", PlayerPrefs.GetInt("Coin", 0) - projectiles[currentSelected].requiredCoin);
-        if (currentSelected > PlayerPrefs.GetInt("Projectile", 0)) PlayerPrefs.SetInt("Projectile", currentSelected);
+        if (currentSelected > PlayerPrefs.GetInt("UnlockedProjectile", 0)) 
+        {
+            PlayerPrefs.SetInt("UnlockedProjectile", currentSelected);
+        }
+        PlayerPrefs.SetInt("SelectedProjectile", currentSelected);
 
         UIController.Instance.UpdateCoinText(PlayerPrefs.GetInt("Coin", 0));
         unlockText.text = "Unlocked";

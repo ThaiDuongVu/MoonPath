@@ -739,7 +739,7 @@ PrefabInstance:
     - target: {fileID: 8855896104245152599, guid: 155f7a0f442fbf143857613532596940, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8294081950461398068, guid: 617b5566dbfb2e84c883773570131054, type: 3}
+      objectReference: {fileID: 1159218411}
     - target: {fileID: 8855896104245152599, guid: 155f7a0f442fbf143857613532596940, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: SceneLoader, Assembly-CSharp
@@ -1755,12 +1755,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8855896104245152599, guid: 155f7a0f442fbf143857613532596940, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8855896104245152599, guid: 155f7a0f442fbf143857613532596940, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Disable
+      value: Load
       objectReference: {fileID: 0}
+    - target: {fileID: 8855896104245152599, guid: 155f7a0f442fbf143857613532596940, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SceneLoader, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8855896104245152599, guid: 155f7a0f442fbf143857613532596940, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8855896104245152599, guid: 155f7a0f442fbf143857613532596940, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8855896104245152599, guid: 155f7a0f442fbf143857613532596940, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Customize
+      objectReference: {fileID: 0}
+    - target: {fileID: 8855896104245152599, guid: 155f7a0f442fbf143857613532596940, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1159218411}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 155f7a0f442fbf143857613532596940, type: 3}
 --- !u!224 &1386565559 stripped

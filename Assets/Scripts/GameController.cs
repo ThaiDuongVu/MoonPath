@@ -97,7 +97,7 @@ public class GameController : MonoBehaviour
         turret.Shoot();
 
         // Create a new projectile and set it to current projectile
-        _currentProjectile = Instantiate(projectilePrefabs[PlayerPrefs.GetInt("Projectile", 0)], turret.spawnPoint.position, turret.spawnPoint.rotation).GetComponent<Projectile>();
+        _currentProjectile = Instantiate(projectilePrefabs[PlayerPrefs.GetInt("SelectedProjectile", 0)], turret.spawnPoint.position, turret.spawnPoint.rotation).GetComponent<Projectile>();
 
         // Set camera targets
         Transform currentProjectileTransform = _currentProjectile.transform;
