@@ -3,7 +3,7 @@
 public class CountdownMode : GameController
 {
     // Countdown timer
-    private float timer = 120f + 1f;
+    private float timer = 90f + 1f;
     // Whether to perform countdown or not
     private bool _doCountdown = true;
 

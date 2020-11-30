@@ -21,6 +21,8 @@ public class SettingsController : MonoBehaviour
     public Settings font;
     public TMP_FontAsset[] fonts;
 
+    public new Settings audio;
+
     // Awake is called when an object is initialized
     private void Awake()
     {
@@ -46,6 +48,11 @@ public class SettingsController : MonoBehaviour
         foreach (TMP_Text text in Resources.FindObjectsOfTypeAll(typeof(TMP_Text)))
         {
             text.font = fonts[font.currentState];
+        }
+
+        foreach (AudioSource audioSource in Resources.FindObjectsOfTypeAll(typeof(AudioSource)))
+        {
+            audioSource.enabled = false;
         }
     }
 }
